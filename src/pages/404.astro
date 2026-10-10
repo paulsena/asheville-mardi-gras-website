@@ -1,12 +1,13 @@
 ---
+import { withBase } from '../utils/url';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 ---
 <Base title="Page not found">
   <PageHero eyebrow="404" title="This float took a wrong turn" lede="We couldn't find that page. Try the parade info or upcoming events instead.">
     <div class="btn-row">
-      <a class="btn btn--purple" href="/parade">Parade Info</a>
-      <a class="btn" href="/events">Upcoming Events</a>
+      <a class="btn btn--purple" href={withBase('/parade')}>Parade Info</a>
+      <a class="btn" href={withBase('/events')}>Upcoming Events</a>
     </div>
   </PageHero>
 </Base>

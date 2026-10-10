@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../utils/url';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import MailForm from '../components/MailForm.astro';
@@ -9,23 +10,23 @@ import { links } from '../data/site';
   <section class="section" style="padding-top:0">
     <div class="wrap cards">
       <article class="card">
-        <img src="/images/site/involved-members.webp" alt="members" width="1080" height="1065" />
+        <img src={withBase('/images/site/involved-members.webp')} alt="members" width="1080" height="1065" />
         <div class="card-body">
           <h3>Become a member</h3>
           <p>Membership has its perks and we have membership options to fit all budgets and situations. Click through and explore the benefits of Membership.</p>
-          <a class="btn btn--sm btn--purple" href="/membership">More Info</a>
+          <a class="btn btn--sm btn--purple" href={withBase('/membership')}>More Info</a>
         </div>
       </article>
       <article class="card">
-        <img src="/images/site/cleanup.webp" alt="helping clean up" width="720" height="960" />
+        <img src={withBase('/images/site/cleanup.webp')} alt="helping clean up" width="720" height="960" />
         <div class="card-body">
           <h3>Volunteer</h3>
           <p>Show up for an hour or join the executive board. We have options for any and all interests.</p>
-          <a class="btn btn--sm btn--purple" href="/volunteer">More Info</a>
+          <a class="btn btn--sm btn--purple" href={withBase('/volunteer')}>More Info</a>
         </div>
       </article>
       <article class="card">
-        <img src="/images/site/involved-donate.webp" alt="donate" width="1000" height="1000" />
+        <img src={withBase('/images/site/involved-donate.webp')} alt="donate" width="1000" height="1000" />
         <div class="card-body">
           <h3>Donate $$$</h3>
           <p>We can always use donations. Parades don't grow on trees. Asheville Mardi Gras relies on the support of its members and donors to operate. As a 501(c)(3) organization, all donations are completely tax deductible.</p>
@@ -33,11 +34,11 @@ import { links } from '../data/site';
         </div>
       </article>
       <article class="card">
-        <img src="/images/site/second-line-band.webp" alt="A2L" width="720" height="448" />
+        <img src={withBase('/images/site/second-line-band.webp')} alt="A2L" width="720" height="448" />
         <div class="card-body">
           <h3>A2L</h3>
           <p>So you think you're a player? They're crazy, They're fun and they all got musical skills. Click through to get more info on the Asheville Second Line Band.</p>
-          <a class="btn btn--sm btn--purple" href="/second-line">More Info</a>
+          <a class="btn btn--sm btn--purple" href={withBase('/second-line')}>More Info</a>
         </div>
       </article>
     </div>

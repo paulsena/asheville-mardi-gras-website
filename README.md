@@ -4,9 +4,26 @@ Static Astro rebuild of ashevillemardigras.org. See `DESIGN.md` for the redesign
 
 ```sh
 npm install
-npm run dev      # http://localhost:4321
+npm run dev      # http://localhost:4321/asheville-mardi-gras-website/
 npm run build    # static output in dist/
 ```
+
+## GitHub Pages
+
+The public project site is https://paulsena.github.io/asheville-mardi-gras-website/.
+`.github/workflows/deploy.yml` builds and deploys it on pushes to `main`, or manually
+from the Actions tab. Repository Settings → Pages must use **GitHub Actions** as
+the publishing source. The workflow uses the Pages URL and base path automatically.
+
+Local builds use the same project path. Internal links and image URLs use
+`src/utils/url.ts` to respect that path. To build for the organization's domain instead:
+
+```sh
+SITE_URL=https://www.ashevillemardigras.org BASE_PATH=/ npm run build
+```
+
+GitHub Pages does not process `public/_redirects`; those legacy Wix redirects apply
+only to Netlify / Cloudflare Pages hosting.
 
 ## Updating content
 - **Events:** `src/data/events.ts`. Past events hide automatically in the browser.

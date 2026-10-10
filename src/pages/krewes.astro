@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../utils/url';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
@@ -17,10 +18,10 @@ const strip = [1, 2, 3, 4, 5, 6, 7];
         <p>Krewes are welcome to have a float and/or a sound system, although neither are necessary. You can theme your costumes or go free form! You can give beads, handmade art, or other giveaways, or skip it. Basically, keep it fun and respectful and you’ll do just fine!</p>
         <p>Kids are also welcome to march in the parade. Just keep in mind that the environment can be quite intense, so just be sure that will work out OK.</p>
         <p>We’ll be back in touch closer to parade time to let you know your position in the parade. That’s all it takes!</p>
-        <p class="callout">We would love it if all of the Krewe members were also members of Asheville Mardi Gras as membership fees are one of the main ways we pay for putting on the parade. <a href="/membership">Click here to find out more!</a></p>
+        <p class="callout">We would love it if all of the Krewe members were also members of Asheville Mardi Gras as membership fees are one of the main ways we pay for putting on the parade. <a href={withBase('/membership')}>Click here to find out more!</a></p>
       </div>
       <figure class="framed" style="transform:rotate(2deg)">
-        <img src="/images/site/krewe-photo.webp" alt="A krewe in costume at the parade" width="921" height="1074" />
+        <img src={withBase('/images/site/krewe-photo.webp')} alt="A krewe in costume at the parade" width="921" height="1074" />
       </figure>
     </div>
   </section>
@@ -62,7 +63,7 @@ const strip = [1, 2, 3, 4, 5, 6, 7];
       <article class="panel">
         <h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">Helping Out</h2>
         <p>We also ask that at least one person associated with your krewe volunteer to work the barriers at the parade. This gig basically consists of helping to set up the barriers that close the roads at the start of the parade, removing them when the parade is over, and manning them during the parade. We might also ask for your help with crowd flow. It’s a great gig for a teenager or anyone who wants to get involved in the parade but not necessarily march! You can sign up your volunteer here.</p>
-        <a class="btn btn--purple" href="/volunteer">volunteer</a>
+        <a class="btn btn--purple" href={withBase('/volunteer')}>volunteer</a>
       </article>
     </div>
   </section>
@@ -71,7 +72,7 @@ const strip = [1, 2, 3, 4, 5, 6, 7];
     <div class="wrap">
       <div class="krewe-strip">
         {strip.map((n) => (
-          <a href={`/images/site/krewe-${n}.webp`} target="_blank" rel="noopener"><img src={`/images/site/krewe-${n}.webp`} alt="Krewe marching in the Asheville Mardi Gras parade" loading="lazy" /></a>
+          <a href={withBase(`/images/site/krewe-${n}.webp`)} target="_blank" rel="noopener"><img src={withBase(`/images/site/krewe-${n}.webp`)} alt="Krewe marching in the Asheville Mardi Gras parade" loading="lazy" /></a>
         ))}
       </div>
     </div>

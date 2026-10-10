@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../utils/url';
 import Base from '../layouts/Base.astro';
 import Ridge from '../components/Ridge.astro';
 import Icon from '../components/Icon.astro';
@@ -10,7 +11,7 @@ import { site, links } from '../data/site';
 import dims from '../data/image-dims.json';
 
 const wall = ['home-3', 'home-1', 'home-2', 'home-7', 'home-5', 'home-4', 'home-6', 'home-8'] as const;
-const img = (name: keyof typeof dims) => ({ src: `/images/site/${name}.webp`, width: dims[name].w, height: dims[name].h });
+const img = (name: keyof typeof dims) => ({ src: withBase(`/images/site/${name}.webp`), width: dims[name].w, height: dims[name].h });
 ---
 <Base ridgeFrom="var(--purple-deep)">
   <!-- Hero: the annual parade -->
@@ -27,14 +28,14 @@ const img = (name: keyof typeof dims) => ({ src: `/images/site/${name}.webp`, wi
         </ul>
         <Countdown target={parade.start} />
         <div class="btn-row">
-          <a class="btn btn--purple" href="/parade">Parade Info <Icon name="arrow" size={18} /></a>
-          <a class="btn" href="/krewes">Want to be in the parade?</a>
+          <a class="btn btn--purple" href={withBase('/parade')}>Parade Info <Icon name="arrow" size={18} /></a>
+          <a class="btn" href={withBase('/krewes')}>Want to be in the parade?</a>
         </div>
       </div>
       <div class="hero-collage" aria-hidden="true">
         <span class="burst" style="left:-14px;top:38%;">Rain<br />or<br />Shine!</span>
         <figure class="p1"><span class="tape"></span><img {...img('home-6')} alt="" fetchpriority="high" /></figure>
-        <figure class="p2"><img src="/images/site/event-parade-2027.webp" width="1024" height="1024" alt="" /></figure>
+        <figure class="p2"><img src={withBase('/images/site/event-parade-2027.webp')} width="1024" height="1024" alt="" /></figure>
         <figure class="p3"><span class="tape"></span><img {...img('home-7')} alt="" /></figure>
         <figure class="p4"><img {...img('home-2')} alt="" /></figure>
       </div>
@@ -52,7 +53,7 @@ const img = (name: keyof typeof dims) => ({ src: `/images/site/${name}.webp`, wi
         <p>Asheville Mardi Gras plans entertaining events year-round! Check here to find out what's coming up.</p>
       </div>
       <EventTickets events={events} limit={4} />
-      <p style="margin-top:2rem"><a class="btn btn--cream" href="/events"><Icon name="calendar" size={18} /> Full Calendar of Events</a></p>
+      <p style="margin-top:2rem"><a class="btn btn--cream" href={withBase('/events')}><Icon name="calendar" size={18} /> Full Calendar of Events</a></p>
     </div>
   </section>
 
@@ -69,10 +70,10 @@ const img = (name: keyof typeof dims) => ({ src: `/images/site/${name}.webp`, wi
       </div>
       <div class="photo-wall">
         {wall.map((name) => (
-          <a href="/gallery"><img {...img(name)} alt="Asheville Mardi Gras parade photo" loading="lazy" /></a>
+          <a href={withBase('/gallery')}><img {...img(name)} alt="Asheville Mardi Gras parade photo" loading="lazy" /></a>
         ))}
       </div>
-      <p style="margin-top:2.2rem" class="center"><a class="btn btn--purple" href="/gallery"><Icon name="camera" size={18} /> See all the photos</a></p>
+      <p style="margin-top:2.2rem" class="center"><a class="btn btn--purple" href={withBase('/gallery')}><Icon name="camera" size={18} /> See all the photos</a></p>
     </div>
   </section>
 
@@ -80,7 +81,7 @@ const img = (name: keyof typeof dims) => ({ src: `/images/site/${name}.webp`, wi
   <section class="section">
     <div class="wrap split">
       <figure class="framed">
-        <img src="/images/site/second-line-band.webp" width="720" height="448" alt="The Asheville Second Line band marching in costume" loading="lazy" />
+        <img src={withBase('/images/site/second-line-band.webp')} width="720" height="448" alt="The Asheville Second Line band marching in costume" loading="lazy" />
         <figcaption>Asheville Second Line, bringing the brass to the streets.</figcaption>
       </figure>
       <div>
@@ -106,31 +107,31 @@ const img = (name: keyof typeof dims) => ({ src: `/images/site/${name}.webp`, wi
       </div>
       <div class="cards">
         <article class="card">
-          <img src="/images/site/involved-members.webp" alt="Asheville Mardi Gras members in costume" loading="lazy" width="1080" height="1065" />
+          <img src={withBase('/images/site/involved-members.webp')} alt="Asheville Mardi Gras members in costume" loading="lazy" width="1080" height="1065" />
           <div class="card-body">
             <h3>Become a member</h3>
             <p>Membership has its perks and we have membership options to fit all budgets and situations.</p>
-            <a class="btn btn--sm btn--purple" href="/membership">More Info</a>
+            <a class="btn btn--sm btn--purple" href={withBase('/membership')}>More Info</a>
           </div>
         </article>
         <article class="card">
-          <img src="/images/site/cleanup.webp" alt="Volunteers helping to clean up" loading="lazy" width="720" height="960" />
+          <img src={withBase('/images/site/cleanup.webp')} alt="Volunteers helping to clean up" loading="lazy" width="720" height="960" />
           <div class="card-body">
             <h3>Volunteer</h3>
             <p>Show up for an hour or join the executive board. We have options for any and all interests.</p>
-            <a class="btn btn--sm btn--purple" href="/volunteer">More Info</a>
+            <a class="btn btn--sm btn--purple" href={withBase('/volunteer')}>More Info</a>
           </div>
         </article>
         <article class="card">
-          <img src="/images/site/krewe-4.webp" alt="A krewe marching in the parade" loading="lazy" width="1400" height="1050" />
+          <img src={withBase('/images/site/krewe-4.webp')} alt="A krewe marching in the parade" loading="lazy" width="1400" height="1050" />
           <div class="card-body">
             <h3>March in a krewe</h3>
             <p>Join an existing krewe or start your own — floats are optional, fun is not.</p>
-            <a class="btn btn--sm btn--purple" href="/krewes">Krewes</a>
+            <a class="btn btn--sm btn--purple" href={withBase('/krewes')}>Krewes</a>
           </div>
         </article>
         <article class="card">
-          <img src="/images/site/involved-donate.webp" alt="Donate" loading="lazy" width="1000" height="1000" />
+          <img src={withBase('/images/site/involved-donate.webp')} alt="Donate" loading="lazy" width="1000" height="1000" />
           <div class="card-body">
             <h3>Donate $$$</h3>
             <p>Parades don't grow on trees. As a 501(c)(3) organization, all donations are completely tax deductible.</p>

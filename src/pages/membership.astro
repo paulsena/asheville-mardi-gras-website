@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../utils/url';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import { links } from '../data/site';
@@ -26,14 +27,14 @@ import { links } from '../data/site';
       </div>
       <div class="tiers">
         <article class="tier">
-          <img src="/images/site/member-individual.png" alt="" width="84" height="84" />
+          <img src={withBase('/images/site/member-individual.png')} alt="" width="84" height="84" />
           <h3>Individual</h3>
           <div class="price">$30</div>
           <div class="per">Individual Membership</div>
           <a class="btn btn--purple" href={links.membershipCheckout} rel="noopener">BUY NOW</a>
         </article>
         <article class="tier tier--featured">
-          <img src="/images/site/member-lord-lady.png" alt="" width="84" height="84" />
+          <img src={withBase('/images/site/member-lord-lady.png')} alt="" width="84" height="84" />
           <h3>Lord/Lady</h3>
           <div class="price">$5 / month</div>
           <div class="per">($60 year)</div>
@@ -41,7 +42,7 @@ import { links } from '../data/site';
           <a class="btn btn--purple" href={links.membershipCheckout} rel="noopener">BUY NOW</a>
         </article>
         <article class="tier">
-          <img src="/images/site/member-baron-baroness.png" alt="" width="84" height="84" />
+          <img src={withBase('/images/site/member-baron-baroness.png')} alt="" width="84" height="84" />
           <h3>Baron/Baroness</h3>
           <div class="price">$10 / month</div>
           <div class="per">($120 year)</div>

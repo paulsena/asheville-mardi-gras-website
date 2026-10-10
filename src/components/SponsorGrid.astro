@@ -1,12 +1,13 @@
 ---
+import { withBase } from '../utils/url';
 import { sponsors } from '../data/sponsors';
 ---
 <div class="sponsors">
   {sponsors.map((s) =>
     s.url ? (
-      <a href={s.url} rel="noopener" title={s.name}><img src={`/images/site/${s.logo}`} alt={s.name} loading="lazy" /></a>
+      <a href={s.url} rel="noopener" title={s.name}><img src={withBase(`/images/site/${s.logo}`)} alt={s.name} loading="lazy" /></a>
     ) : (
-      <div title={s.name}><img src={`/images/site/${s.logo}`} alt={s.name} loading="lazy" /></div>
+      <div title={s.name}><img src={withBase(`/images/site/${s.logo}`)} alt={s.name} loading="lazy" /></div>
     )
   )}
 </div>

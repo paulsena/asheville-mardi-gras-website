@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../utils/url';
 import type { AmgEvent } from '../data/events';
 import Icon from './Icon.astro';
 interface Props { events: AmgEvent[]; limit?: number; }
@@ -22,7 +23,7 @@ const timeRange = (e: AmgEvent) =>
       </div>
       <div class="ticket-body">
         <div>
-          <h3><a href={e.href}>{e.title}</a></h3>
+          <h3><a href={withBase(e.href)}>{e.title}</a></h3>
           <div class="ticket-meta">
             <span><span class="visually-hidden">Date: </span>{fmt(e.start, { weekday: 'long', month: 'long', day: 'numeric' })}</span>
             <span>{timeRange(e)}</span>
@@ -30,11 +31,11 @@ const timeRange = (e: AmgEvent) =>
           </div>
           <p>{e.summary}</p>
           <div class="btn-row">
-            <a class="btn btn--sm btn--purple" href={e.href}>{e.cta} <Icon name="arrow" size={16} /></a>
+            <a class="btn btn--sm btn--purple" href={withBase(e.href)}>{e.cta} <Icon name="arrow" size={16} /></a>
             {e.tickets && <a class="btn btn--sm" href={e.tickets} rel="noopener">Tickets <Icon name="ticket" size={16} /></a>}
           </div>
         </div>
-        <img class="ticket-art" src={e.image} alt="" width="120" height="120" loading="lazy" />
+        <img class="ticket-art" src={withBase(e.image)} alt="" width="120" height="120" loading="lazy" />
       </div>
     </article>
   ))}

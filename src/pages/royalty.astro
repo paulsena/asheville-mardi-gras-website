@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../utils/url';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 ---
@@ -9,7 +10,7 @@ import PageHero from '../components/PageHero.astro';
     <div class="wrap split split--wide-left" style="align-items:start">
       <div class="stack">
         <h2>How and when are they chosen?</h2>
-        <p>Each year, deep in the heart of winter, the Mardi Gras season lights a spark as it begins in January with the <a href="/events/twelfth-night">Twelfth Night celebration</a>. On this enchanted night, the King and Queen of Asheville’s new Mardi Gras season will be crowned.</p>
+        <p>Each year, deep in the heart of winter, the Mardi Gras season lights a spark as it begins in January with the <a href={withBase('/events/twelfth-night')}>Twelfth Night celebration</a>. On this enchanted night, the King and Queen of Asheville’s new Mardi Gras season will be crowned.</p>
         <p>Worthy individuals are nominated by Asheville Mardi Gras members to be royalty. Nominees can decide if they want to be considered for a royal position. If so, they complete a short survey to ensure that they are suitable for a royal position.</p>
         <p>The eligible royal nominees at Twelfth Night will be invited to take a slice of king cake. Whoever finds the king cake baby in his or her slice will pick a royal consort, and the two will ride the royal float accompanied by their court in the Asheville Mardi Gras Parade!</p>
         <p>The two persons who accept the coronation as Asheville Mardi Gras’ Royalty share the duties and expectations as outlined below for one year, with the assistance and support of the Asheville Mardi Gras Board</p>
@@ -17,7 +18,7 @@ import PageHero from '../components/PageHero.astro';
       <aside class="panel panel--gold">
         <h3>Royalty nominations</h3>
         <p>Nominations are made by Asheville Mardi Gras members. The nomination form is currently closed.</p>
-        <p style="margin:0">You must be a member to become royalty. <a href="/membership">Join or renew</a>.</p>
+        <p style="margin:0">You must be a member to become royalty. <a href={withBase('/membership')}>Join or renew</a>.</p>
       </aside>
     </div>
   </section>
@@ -59,7 +60,7 @@ import PageHero from '../components/PageHero.astro';
         <li><h3>Participate in AMG Board meetings, at the request of the Board</h3></li>
         <li><h3>Champion the celebration of Mardi Gras!</h3></li>
       </ol>
-      <p style="margin-top:2rem"><a class="btn btn--purple" href="/parade#history">Meet past royalty</a></p>
+      <p style="margin-top:2rem"><a class="btn btn--purple" href={withBase('/parade#history')}>Meet past royalty</a></p>
     </div>
   </section>
 </Base>

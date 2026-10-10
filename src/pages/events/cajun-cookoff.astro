@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../../utils/url';
 import Base from '../../layouts/Base.astro';
 import PageHero from '../../components/PageHero.astro';
 import Icon from '../../components/Icon.astro';
@@ -53,7 +54,7 @@ const chefs = [
         <p>Laissez les bon temps rouler! Treat yourself to the flavors of Louisiana cuisine cooked by over 15 professional and home chefs. While filling your belly, Two-step your way to happiness with Asheville's own 2nd Line band and Canjun music by Jackomo Cajun Country Band.</p>
         <p>The final details are in the works! Follow us on <a href={site.facebook} rel="noopener">Facebook</a> and Instagram so you know all the what dat!</p>
         <p>If you are interested in volunteering or entering as a cook (business or home chef), please email at: <a href={`mailto:${site.email}`}>{site.email}</a></p>
-        <p>Of course, if you really want the inside scoop, become a supporting member of Asheville Mardi Gras! It is very easy and helps support the parade. <a href="/membership">Click Here!</a></p>
+        <p>Of course, if you really want the inside scoop, become a supporting member of Asheville Mardi Gras! It is very easy and helps support the parade. <a href={withBase('/membership')}>Click Here!</a></p>
       </div>
       <aside class="panel panel--gold" style="position:relative">
         <span class="burst" style="right:-18px;top:-30px;--size:88px">12<br />Chefs!</span>
@@ -71,11 +72,11 @@ const chefs = [
   <section class="section section--parchment">
     <div class="wrap">
       <div class="krewe-strip" style="margin-bottom:0.6rem">
-        <img src="/images/site/cookoff-royals.webp" alt="king and queen" width="1400" height="997" loading="lazy" style="border-radius:10px;aspect-ratio:4/3;object-fit:cover" />
-        <img src="/images/site/cookoff-fun.webp" alt="having fun" width="1280" height="857" loading="lazy" style="border-radius:10px;aspect-ratio:4/3;object-fit:cover" />
-        <img src="/images/site/cookoff-a2l.webp" alt="A2L" width="1280" height="876" loading="lazy" style="border-radius:10px;aspect-ratio:4/3;object-fit:cover" />
+        <img src={withBase('/images/site/cookoff-royals.webp')} alt="king and queen" width="1400" height="997" loading="lazy" style="border-radius:10px;aspect-ratio:4/3;object-fit:cover" />
+        <img src={withBase('/images/site/cookoff-fun.webp')} alt="having fun" width="1280" height="857" loading="lazy" style="border-radius:10px;aspect-ratio:4/3;object-fit:cover" />
+        <img src={withBase('/images/site/cookoff-a2l.webp')} alt="A2L" width="1280" height="876" loading="lazy" style="border-radius:10px;aspect-ratio:4/3;object-fit:cover" />
       </div>
-      <p class="form-note">Neil Jacobs photos · <a href="/gallery#2025-cajun-cookoff">See the 2025 Cookoff album</a></p>
+      <p class="form-note">Neil Jacobs photos · <a href={withBase('/gallery#2025-cajun-cookoff')}>See the 2025 Cookoff album</a></p>
     </div>
   </section>
 

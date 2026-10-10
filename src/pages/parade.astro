@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../utils/url';
 import Base from '../layouts/Base.astro';
 import Ridge from '../components/Ridge.astro';
 import Icon from '../components/Icon.astro';
@@ -18,7 +19,7 @@ import { links, site } from '../data/site';
         <Countdown target={parade.start} />
       </div>
       <figure class="framed" style="max-width:420px;justify-self:center;transform:rotate(2deg)">
-        <img src="/images/site/parade-rain-or-shine.webp" alt="The parade rolls rain or shine!" width="1024" height="1024" />
+        <img src={withBase('/images/site/parade-rain-or-shine.webp')} alt="The parade rolls rain or shine!" width="1024" height="1024" />
       </figure>
     </div>
   </header>
@@ -41,8 +42,8 @@ import { links, site } from '../data/site';
       </div>
       <div class="center">
         <p class="eyebrow">Parade Route</p>
-        <a class="map-link" href="/images/site/parade-map.webp" target="_blank" rel="noopener">
-          <img src="/images/site/parade-map.webp" alt="Parade route map of the South Slope: line up along Coxe Avenue, looping through the brewery district" width="385" height="621" />
+        <a class="map-link" href={withBase('/images/site/parade-map.webp')} target="_blank" rel="noopener">
+          <img src={withBase('/images/site/parade-map.webp')} alt="Parade route map of the South Slope: line up along Coxe Avenue, looping through the brewery district" width="385" height="621" />
         </a>
         <p class="form-note" style="margin-top:1rem">Click on Map for full page version</p>
       </div>
@@ -59,7 +60,7 @@ import { links, site } from '../data/site';
       <article class="panel">
         <h3 class="display" style="font-weight:400;font-size:1.8rem;color:var(--purple)">Want to be in the parade?</h3>
         <p>Join an existing krewe or start your own.</p>
-        <a class="btn btn--purple" href="/krewes">Check out our krewe page for more info</a>
+        <a class="btn btn--purple" href={withBase('/krewes')}>Check out our krewe page for more info</a>
       </article>
     </div>
   </section>
@@ -67,7 +68,7 @@ import { links, site } from '../data/site';
   <section class="section" id="queens-ball">
     <div class="wrap split">
       <figure class="framed">
-        <img src="/images/site/queens-ball.webp" alt="The Queen's Ball" width="1080" height="1080" loading="lazy" />
+        <img src={withBase('/images/site/queens-ball.webp')} alt="The Queen's Ball" width="1080" height="1080" loading="lazy" />
       </figure>
       <div>
         <p class="eyebrow">After the Parade</p>
@@ -78,7 +79,7 @@ import { links, site } from '../data/site';
         <p>There will be dancing, live music, and the Awards ceremony. Awards for Krewe of Distinction, Best Costume, and the Rob Seven Award (a member who has exemplified the Mardi Gras spirit) will be announced.</p>
         <p>People will have a chance to mingle with the krewes, eat, drink, dance and be merry, maybe even meet the Royals.</p>
         <p>It's a chance for Krewe members to see other krewes' costumes and hang out with each other.</p>
-        <img src="/images/site/sponsor-funkatorium.png" alt="Funkatorium" width="240" style="width:240px;mix-blend-mode:multiply;margin-top:1rem" loading="lazy" />
+        <img src={withBase('/images/site/sponsor-funkatorium.png')} alt="Funkatorium" width="240" style="width:240px;mix-blend-mode:multiply;margin-top:1rem" loading="lazy" />
       </div>
     </div>
   </section>

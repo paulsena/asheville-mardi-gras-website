@@ -1,0 +1,25 @@
+# dependencies & build output
+node_modules/
+dist/
+.astro/
+
+# environment / secrets
+.env
+.env.*
+!.env.example
+
+# hosting CLIs
+.netlify/
+.vercel/
+.wrangler/
+
+# logs
+npm-debug.log*
+*.log
+
+# OS / editor
+.DS_Store
+.idea/
+
+# per-user agent settings (shared .claude/settings.json is fine to commit)
+.claude/settings.local.json

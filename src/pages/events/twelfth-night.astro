@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../../utils/url';
 import Base from '../../layouts/Base.astro';
 import PageHero from '../../components/PageHero.astro';
 import Icon from '../../components/Icon.astro';
@@ -11,7 +12,7 @@ import { links } from '../../data/site';
     <div class="wrap split" style="align-items:start">
       <div class="stack">
         <figure class="framed" style="max-width:460px">
-          <img src="/images/site/event-twelfth-night.webp" alt="Twelfth Night Masquerade Party" width="1024" height="1024" />
+          <img src={withBase('/images/site/event-twelfth-night.webp')} alt="Twelfth Night Masquerade Party" width="1024" height="1024" />
         </figure>
       </div>
       <div class="stack">
@@ -32,7 +33,7 @@ import { links } from '../../data/site';
   <section class="section section--parchment">
     <div class="wrap narrow stack">
       <h2>How the King &amp; Queen are chosen</h2>
-      <p>Partygoers are invited to have a slice of king cake. However, only current Asheville Mardi Gras members get to take a slice of the king cake containing the little plastic baby. <a href="/membership">Update your membership here</a>.</p>
+      <p>Partygoers are invited to have a slice of king cake. However, only current Asheville Mardi Gras members get to take a slice of the king cake containing the little plastic baby. <a href={withBase('/membership')}>Update your membership here</a>.</p>
       <p>Whoever finds the Mardi Gras baby in his or her slice can become the next king or queen, joining the ranks of AMG royalty. Memberships will be available at the door for $30, but register online to avoid the line at the door. As always, costumery and buffoonery are encouraged.</p>
       <p>Another change that we are trying out this year is how the King and Queen are selected. In past years, deciding who wants a chance at the baby and who doesn't was always a bother and took too long and there were always a few rumors that "it was rigged". So we are going for more transparency and a smaller pool of candidates.</p>
       <p>We have had a lot of good Kings and Queens and we'd like to continue that trend so we will be accepting nominations for Royalty and the board will contact candidates to make sure they want the honor and are willing to fulfill all the responsibilities that come with it. The pool will be narrowed down to 15-20 folks and then during the Twelfth Night festivities, these folks will each select a slice of cake and baby will make the final decision.</p>
@@ -45,12 +46,12 @@ import { links } from '../../data/site';
       <article class="card"><div class="card-body">
         <h3>Royalty</h3>
         <p>If you're interested in what it takes to be King or Queen, hit this button for all the requirements and responsibilities. There's more to it than just riding on the float!!!</p>
-        <a class="btn btn--sm btn--purple" href="/royalty">Rules for Royals</a>
+        <a class="btn btn--sm btn--purple" href={withBase('/royalty')}>Rules for Royals</a>
       </div></article>
       <article class="card"><div class="card-body">
         <h3>Membership</h3>
         <p>To renew your membership or join, click here. Members receive a discount on tickets and you must be a member to become royalty.</p>
-        <a class="btn btn--sm btn--purple" href="/membership">Join or Renew</a>
+        <a class="btn btn--sm btn--purple" href={withBase('/membership')}>Join or Renew</a>
       </div></article>
       <article class="card"><div class="card-body">
         <h3>Tickets</h3>
