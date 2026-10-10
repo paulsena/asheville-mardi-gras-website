@@ -2,6 +2,7 @@
 node_modules/
 dist/
 .astro/
+.wix-static/
 
 # environment / secrets
 .env
@@ -9,6 +10,7 @@ dist/
 !.env.example
 
 # hosting CLIs
+.wix/
 .netlify/
 .vercel/
 .wrangler/
