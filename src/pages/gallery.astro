@@ -1,0 +1,91 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import gallery from '../data/gallery.json';
+const total = gallery.reduce((n, a) => n + a.photos.length, 0);
+---
+<Base title="Gallery" description="Photos from Asheville Mardi Gras parades and the Cajun Cookoff, 2019–2025.">
+  <PageHero eyebrow="Community Photography" title="Photos" lede={`${total} moments of costumes, krewes, floats and frivolity from our parades and parties.`} />
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="chips" role="group" aria-label="Filter albums">
+        <button class="chip" aria-pressed="true" data-filter="all">All <small>{total}</small></button>
+        {gallery.map((a) => <button class="chip" aria-pressed="false" data-filter={a.slug}>{a.title} <small>{a.photos.length}</small></button>)}
+      </div>
+      {gallery.map((a) => (
+        <section class="album" id={a.slug} data-album={a.slug}>
+          <div class="album-head">
+            <h2>{a.title}</h2>
+            {a.credit && <p>photo credits: {a.credit}</p>}
+          </div>
+          <div class="masonry">
+            {a.photos.map((p, i) => (
+              <a href={p.src} data-lightbox data-caption={`${a.title}${a.credit ? ' · photo: ' + a.credit : ''}`}>
+                <img src={p.thumb} width={p.w} height={p.h} alt={`${a.title} photo ${i + 1}`} loading="lazy" decoding="async" />
+              </a>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </section>
+
+  <dialog class="lightbox" aria-label="Photo viewer">
+    <div class="lightbox-inner">
+      <img alt="" />
+      <button class="lb-close" aria-label="Close">×</button>
+      <button class="lb-prev" aria-label="Previous photo">‹</button>
+      <button class="lb-next" aria-label="Next photo">›</button>
+      <p class="lb-caption"></p>
+    </div>
+  </dialog>
+
+  <script>
+    const chips = document.querySelectorAll<HTMLButtonElement>('.chip');
+    const albums = document.querySelectorAll<HTMLElement>('[data-album]');
+    const applyFilter = (f: string) => {
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.filter === f)));
+      albums.forEach((a) => (a.hidden = f !== 'all' && a.dataset.album !== f));
+    };
+    chips.forEach((c) => c.addEventListener('click', () => {
+      applyFilter(c.dataset.filter!);
+      history.replaceState(null, '', c.dataset.filter === 'all' ? location.pathname : `#${c.dataset.filter}`);
+    }));
+    const hash = location.hash.slice(1);
+    if (hash && [...albums].some((a) => a.dataset.album === hash)) applyFilter(hash);
+
+    const dlg = document.querySelector<HTMLDialogElement>('.lightbox')!;
+    const big = dlg.querySelector('img')!;
+    const cap = dlg.querySelector<HTMLElement>('.lb-caption')!;
+    let items: HTMLAnchorElement[] = [];
+    let idx = 0;
+    const show = (i: number) => {
+      idx = (i + items.length) % items.length;
+      big.src = items[idx].href;
+      big.alt = items[idx].querySelector('img')!.alt;
+      cap.textContent = `${items[idx].dataset.caption} — ${idx + 1} / ${items.length}`;
+    };
+    document.addEventListener('click', (e) => {
+      const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('[data-lightbox]');
+      if (!a) return;
+      e.preventDefault();
+      items = [...document.querySelectorAll<HTMLAnchorElement>('[data-lightbox]')].filter((x) => !x.closest('[hidden]'));
+      show(items.indexOf(a));
+      dlg.showModal();
+    });
+    dlg.querySelector('.lb-close')!.addEventListener('click', () => dlg.close());
+    dlg.querySelector('.lb-prev')!.addEventListener('click', () => show(idx - 1));
+    dlg.querySelector('.lb-next')!.addEventListener('click', () => show(idx + 1));
+    dlg.addEventListener('click', (e) => { if (e.target === dlg || e.target === dlg.firstElementChild) dlg.close(); });
+    dlg.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') show(idx - 1);
+      if (e.key === 'ArrowRight') show(idx + 1);
+    });
+    let x0 = 0;
+    dlg.addEventListener('touchstart', (e) => (x0 = e.touches[0].clientX), { passive: true });
+    dlg.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
+    });
+  </script>
+</Base>

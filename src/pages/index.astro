@@ -1,0 +1,163 @@
+---
+import Base from '../layouts/Base.astro';
+import Ridge from '../components/Ridge.astro';
+import Icon from '../components/Icon.astro';
+import Countdown from '../components/Countdown.astro';
+import EventTickets from '../components/EventTickets.astro';
+import MailForm from '../components/MailForm.astro';
+import { events, parade } from '../data/events';
+import { site, links } from '../data/site';
+import dims from '../data/image-dims.json';
+
+const wall = ['home-3', 'home-1', 'home-2', 'home-7', 'home-5', 'home-4', 'home-6', 'home-8'] as const;
+const img = (name: keyof typeof dims) => ({ src: `/images/site/${name}.webp`, width: dims[name].w, height: dims[name].h });
+---
+<Base ridgeFrom="var(--purple-deep)">
+  <!-- Hero: the annual parade -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">The Annual Parade · {parade.year}</p>
+        <h1>Asheville Mardi Gras <span class="accent">Parade</span></h1>
+        <div class="hero-theme">Theme: {parade.theme}</div>
+        <ul class="hero-facts">
+          <li><Icon name="calendar" /> {parade.dateLabel}</li>
+          <li><Icon name="clock" /> 3:05 PM</li>
+          <li><Icon name="pin" /> {parade.location}</li>
+        </ul>
+        <Countdown target={parade.start} />
+        <div class="btn-row">
+          <a class="btn btn--purple" href="/parade">Parade Info <Icon name="arrow" size={18} /></a>
+          <a class="btn" href="/krewes">Want to be in the parade?</a>
+        </div>
+      </div>
+      <div class="hero-collage" aria-hidden="true">
+        <span class="burst" style="left:-14px;top:38%;">Rain<br />or<br />Shine!</span>
+        <figure class="p1"><span class="tape"></span><img {...img('home-6')} alt="" fetchpriority="high" /></figure>
+        <figure class="p2"><img src="/images/site/event-parade-2027.webp" width="1024" height="1024" alt="" /></figure>
+        <figure class="p3"><span class="tape"></span><img {...img('home-7')} alt="" /></figure>
+        <figure class="p4"><img {...img('home-2')} alt="" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming events -->
+  <section class="section" id="upcoming">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Upcoming Events</p>
+          <h2>What's coming up</h2>
+        </div>
+        <p>Asheville Mardi Gras plans entertaining events year-round! Check here to find out what's coming up.</p>
+      </div>
+      <EventTickets events={events} limit={4} />
+      <p style="margin-top:2rem"><a class="btn btn--cream" href="/events"><Icon name="calendar" size={18} /> Full Calendar of Events</a></p>
+    </div>
+  </section>
+
+  <!-- Community photography -->
+  <Ridge top="var(--cream)" bottom="var(--parchment)" />
+  <section class="section section--parchment">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Community Photography</p>
+          <h2>Straight from the street</h2>
+        </div>
+        <p>Dinosaurs, robots, rainbow lions and a masked Jeep — a few favorite moments from past parades, captured by our community.</p>
+      </div>
+      <div class="photo-wall">
+        {wall.map((name) => (
+          <a href="/gallery"><img {...img(name)} alt="Asheville Mardi Gras parade photo" loading="lazy" /></a>
+        ))}
+      </div>
+      <p style="margin-top:2.2rem" class="center"><a class="btn btn--purple" href="/gallery"><Icon name="camera" size={18} /> See all the photos</a></p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section">
+    <div class="wrap split">
+      <figure class="framed">
+        <img src="/images/site/second-line-band.webp" width="720" height="448" alt="The Asheville Second Line band marching in costume" loading="lazy" />
+        <figcaption>Asheville Second Line, bringing the brass to the streets.</figcaption>
+      </figure>
+      <div>
+        <p class="eyebrow">Who We Are</p>
+        <h2>New Orleans spirit, mountain heart</h2>
+        <p>Asheville Mardi Gras is an all-volunteer community-based arts and culture group made up of New Orleans ex-pats, aficionados of that culture, and … okay, some folks who just LOVE a good party!</p>
+        <p>We are a non-profit organization whose purpose is to strengthen community connections through promoting creativity, frivolity and celebration based on the traditions of New Orleans, LA.</p>
+        <p class="callout">Mardi Gras, or Carnival, is an ancient world-wide tradition of feasting and celebrating before entering a time of atonement.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get involved -->
+  <Ridge top="var(--cream)" bottom="var(--green-deep)" />
+  <section class="section section--green">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow" style="color:var(--gold-soft)">Get Involved</p>
+          <h2>Join the krewe</h2>
+        </div>
+        <p>There are a lot of ways to get involved at Asheville Mardi Gras. Look around and see what suits you!</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <img src="/images/site/involved-members.webp" alt="Asheville Mardi Gras members in costume" loading="lazy" width="1080" height="1065" />
+          <div class="card-body">
+            <h3>Become a member</h3>
+            <p>Membership has its perks and we have membership options to fit all budgets and situations.</p>
+            <a class="btn btn--sm btn--purple" href="/membership">More Info</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="/images/site/cleanup.webp" alt="Volunteers helping to clean up" loading="lazy" width="720" height="960" />
+          <div class="card-body">
+            <h3>Volunteer</h3>
+            <p>Show up for an hour or join the executive board. We have options for any and all interests.</p>
+            <a class="btn btn--sm btn--purple" href="/volunteer">More Info</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="/images/site/krewe-4.webp" alt="A krewe marching in the parade" loading="lazy" width="1400" height="1050" />
+          <div class="card-body">
+            <h3>March in a krewe</h3>
+            <p>Join an existing krewe or start your own — floats are optional, fun is not.</p>
+            <a class="btn btn--sm btn--purple" href="/krewes">Krewes</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="/images/site/involved-donate.webp" alt="Donate" loading="lazy" width="1000" height="1000" />
+          <div class="card-body">
+            <h3>Donate $$$</h3>
+            <p>Parades don't grow on trees. As a 501(c)(3) organization, all donations are completely tax deductible.</p>
+            <a class="btn btn--sm" href={links.donate} rel="noopener">Donate</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mailing list + Facebook -->
+  <Ridge top="var(--green-deep)" bottom="var(--purple-deep)" />
+  <section class="section section--purple" style="padding-bottom:clamp(40px,6vw,72px)">
+    <div class="wrap grid-2" style="align-items:center">
+      <div>
+        <h2>Join our mailing list!</h2>
+        <p>Be the first to hear about Twelfth Night, the Cajun Cookoff, parade line-up and more.</p>
+        <MailForm subject="Add me to the Asheville Mardi Gras mailing list" submitLabel="Sign me up" class="inline-form">
+          <label class="visually-hidden" for="ml-email">Email address</label>
+          <input id="ml-email" type="email" name="email" placeholder="you@example.com" required />
+        </MailForm>
+      </div>
+      <div class="panel panel--gold" style="color:var(--purple-deep)">
+        <h3 style="color:var(--purple-deep)">Follow us on Facebook</h3>
+        <p>Last-minute news, street cleanup days, photos and all the what dat.</p>
+        <a class="btn btn--purple" href={site.facebook} rel="noopener"><Icon name="facebook" /> @Avlmardigras</a>
+      </div>
+    </div>
+  </section>
+</Base>

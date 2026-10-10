@@ -1,0 +1,28 @@
+---
+interface Props { target: string; label?: string; }
+const { target, label = 'Countdown to the next Mardi Gras Parade' } = Astro.props;
+---
+<div class="countdown" data-countdown={target} role="timer" aria-live="off">
+  <p class="countdown-label">{label}</p>
+  <div class="tile"><b data-unit="d">--</b><span>Days</span></div>
+  <div class="tile"><b data-unit="h">--</b><span>Hours</span></div>
+  <div class="tile"><b data-unit="m">--</b><span>Mins</span></div>
+  <div class="tile"><b data-unit="s">--</b><span>Secs</span></div>
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-countdown]').forEach((el) => {
+    const target = new Date(el.dataset.countdown!).getTime();
+    const units = { d: 86400000, h: 3600000, m: 60000, s: 1000 } as const;
+    const tick = () => {
+      let diff = Math.max(0, target - Date.now());
+      for (const [key, ms] of Object.entries(units)) {
+        const n = Math.floor(diff / ms);
+        diff -= n * ms;
+        const out = el.querySelector(`[data-unit="${key}"]`);
+        if (out) out.textContent = key === 'd' ? String(n) : String(n).padStart(2, '0');
+      }
+    };
+    tick();
+    setInterval(tick, 1000);
+  });
+</script>

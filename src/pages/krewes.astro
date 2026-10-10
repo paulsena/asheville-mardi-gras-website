@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { links, site } from '../data/site';
+const strip = [1, 2, 3, 4, 5, 6, 7];
+---
+<Base title="Krewes" description="Join an existing Asheville Mardi Gras krewe or start your own, and register your krewe for the parade.">
+  <PageHero eyebrow="March With Us" title="Krewes">
+    <p class="lede">Believed to have come from the mid-1800s from the Mistick Krewe of Comus – the oldest continuous New Orleans Mardi Gras festivity organization – the word “krewe” simply refers to a group of people who march together in the parade.</p>
+  </PageHero>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap split split--wide-left" style="align-items:start">
+      <div class="stack">
+        <p>In Asheville, some krewes are open to new members, while others guard their membership like the best secret societies. Krewe information can be found below, including which are open and accepting new members. If a group is accepting new members, click on the contact name and send along a note to find out if you can join them for the fun. Otherwise, feel free to start your own krewe!</p>
+        <p>Krewes are welcome to have a float and/or a sound system, although neither are necessary. You can theme your costumes or go free form! You can give beads, handmade art, or other giveaways, or skip it. Basically, keep it fun and respectful and you’ll do just fine!</p>
+        <p>Kids are also welcome to march in the parade. Just keep in mind that the environment can be quite intense, so just be sure that will work out OK.</p>
+        <p>We’ll be back in touch closer to parade time to let you know your position in the parade. That’s all it takes!</p>
+        <p class="callout">We would love it if all of the Krewe members were also members of Asheville Mardi Gras as membership fees are one of the main ways we pay for putting on the parade. <a href="/membership">Click here to find out more!</a></p>
+      </div>
+      <figure class="framed" style="transform:rotate(2deg)">
+        <img src="/images/site/krewe-photo.webp" alt="A krewe in costume at the parade" width="921" height="1074" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--parchment">
+    <div class="wrap grid-2" style="align-items:start">
+      <article class="panel">
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">Join An Existing Krewe!</h2>
+        <p>We have many great established Krewes that are friendly and open to new members and they would love to have you! It's not just a parade, it's a community you'll be joining, often with many Krewes having their own meetings and meetups throughout the year.</p>
+        <p>Feel free to check out this list and contact any of the Krewe captains about joining!</p>
+        <a class="btn btn--purple" href={links.kreweList} rel="noopener">See the Krewe list <Icon name="arrow" size={18} /></a>
+      </article>
+      <article class="panel">
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">Start Your Own Krewe: Bring Your Vision to Life!</h2>
+        <p>Have you ever watched the parade and thought, "I could do that!"? Now is the time to gather your creative friends and make it happen! Starting your own Asheville Mardi Gras Krewe is easier than you think and is the ultimate way to participate in our funky, vibrant community.</p>
+        <h3>It's Easier Than You Think!</h3>
+        <ul>
+          <li><strong>Start Small:</strong> Krewes don't need to be huge! Many of our beloved groups started with 5 to 10 close friends who shared a wacky idea.</li>
+          <li><strong>Floats are Optional:</strong> Forget the stress and expense of building a float. Most Krewes march, dance, or use fun props and costumes that fit their unique identity.</li>
+          <li><strong>Design Your Vibe:</strong> Choose a theme—whether it's based on a shared passion, local history, or just something wonderfully weird. You get to define your group's look, music, and energy (all within the year's overall AMG theme).</li>
+        </ul>
+        <h3>Community All Year Long</h3>
+        <p>Your Krewe is more than a parade entry; it's a year-round social club! It’s a perfect excuse to host costume workshops, organize themed meetups, or simply build a community with people who share your passion for fun and creativity.</p>
+        <h3>Ready to Launch? Here's How to Get Started!</h3>
+        <p>If you have a core group of friends ready to roll, just click on the registration form link below! We'll be in contact closer to the parade with lineup details and for confirmation.</p>
+        <p style="margin:0">If you have any questions, email the Krewe Coordinator: <a href={`mailto:${site.kreweEmail}`}>{site.kreweEmail}</a></p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid-2" style="align-items:start">
+      <article class="panel panel--green">
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">Ready? Register Your Krewe For The Parade</h2>
+        <p>Returning and new krewes, once you are ready to join this year's parade, please have your captain register using the form linked below. You'll need to do this each parade season. We ask just some basic questions about krewe size, if you'll have your own music, floats, and contact info to help us with parade lineup. We'll be in touch as we get closer to the parade with more details about parade lineup.</p>
+        <p>Please read and ensure you agree to our <a href={links.paradeTerms} rel="noopener">Parade Terms &amp; Agreements</a> prior to registration</p>
+        <a class="btn" href={links.kreweRegistration} rel="noopener">Register Here: Yearly Parade Registration Form</a>
+      </article>
+      <article class="panel">
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">Helping Out</h2>
+        <p>We also ask that at least one person associated with your krewe volunteer to work the barriers at the parade. This gig basically consists of helping to set up the barriers that close the roads at the start of the parade, removing them when the parade is over, and manning them during the parade. We might also ask for your help with crowd flow. It’s a great gig for a teenager or anyone who wants to get involved in the parade but not necessarily march! You can sign up your volunteer here.</p>
+        <a class="btn btn--purple" href="/volunteer">volunteer</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="krewe-strip">
+        {strip.map((n) => (
+          <a href={`/images/site/krewe-${n}.webp`} target="_blank" rel="noopener"><img src={`/images/site/krewe-${n}.webp`} alt="Krewe marching in the Asheville Mardi Gras parade" loading="lazy" /></a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

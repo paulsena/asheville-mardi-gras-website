@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { links } from '../data/site';
+---
+<Base title="Membership" description="Become an Asheville Mardi Gras member. Memberships are the parade's biggest source of funding.">
+  <PageHero eyebrow="Membership" title="Become An Asheville Mardi Gras Member!">
+    <p class="lede">Memberships are the parade's biggest source of funding. Memberships help pay for city permits, police, barricades, and much more. While most of our events are open to the wider community, the best way to get involved is to become a member.</p>
+    <p>Annual fees get you discounted or free entry to our events throughout the year. Plus, you ensure that AMG can continue bringing its own high-energy brand of fun to the streets of Asheville all year long!</p>
+  </PageHero>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="grid-2" style="margin-bottom:2rem">
+        <div>
+          <h2 style="font-size:clamp(1.5rem,3vw,2rem)">Basic Memberships</h2>
+          <p>Hey, it may be basic but it gets you full membership.</p>
+          <ul><li>discounts to AMG events</li><li>chance to be King/Queen</li><li>monthly newsletter</li></ul>
+        </div>
+        <div>
+          <h2 style="font-size:clamp(1.5rem,3vw,2rem)">Go Bigger with Monthly Options</h2>
+          <p>So you've got a few extra doubloons laying around the castle and you really love the parade. Help make sure it keeps happening every year.</p>
+          <p><strong>PLUS:</strong></p>
+          <ul><li>all the benefits of a basic membership</li><li>you get a snazzy title! that's fun</li><li>additional SWAG listed below</li></ul>
+        </div>
+      </div>
+      <div class="tiers">
+        <article class="tier">
+          <img src="/images/site/member-individual.png" alt="" width="84" height="84" />
+          <h3>Individual</h3>
+          <div class="price">$30</div>
+          <div class="per">Individual Membership</div>
+          <a class="btn btn--purple" href={links.membershipCheckout} rel="noopener">BUY NOW</a>
+        </article>
+        <article class="tier tier--featured">
+          <img src="/images/site/member-lord-lady.png" alt="" width="84" height="84" />
+          <h3>Lord/Lady</h3>
+          <div class="price">$5 / month</div>
+          <div class="per">($60 year)</div>
+          <ul><li>1 free ticket to Twelfth Night</li></ul>
+          <a class="btn btn--purple" href={links.membershipCheckout} rel="noopener">BUY NOW</a>
+        </article>
+        <article class="tier">
+          <img src="/images/site/member-baron-baroness.png" alt="" width="84" height="84" />
+          <h3>Baron/Baroness</h3>
+          <div class="price">$10 / month</div>
+          <div class="per">($120 year)</div>
+          <ul><li>1 free ticket to Twelfth Night</li></ul>
+          <a class="btn btn--purple" href={links.membershipCheckout} rel="noopener">BUY NOW</a>
+        </article>
+      </div>
+    </div>
+  </section>
+</Base>

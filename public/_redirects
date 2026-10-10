@@ -1,0 +1,18 @@
+# Old Wix URLs -> new pages (Netlify / Cloudflare Pages format)
+/calendarofevents                 /events                 301
+/event-list                       /events                 301
+/events-1                         /events                 301
+/event-details/cajun-cookoff      /events/cajun-cookoff   301
+/cajun-cookoff                    /events/cajun-cookoff   301
+/twelfthnight                     /events/twelfth-night   301
+/event-details/twelfth-night-masquerade-party-2  /events/twelfth-night  301
+/event-details/the-queens-ball-2  /parade#queens-ball     301
+/event-details/*                  /parade                 301
+/parade-and-queens-ball           /parade                 301
+/map-page                         /parade                 301
+/getinvolved                      /get-involved           301
+/asheville-second-line            /second-line            301
+/royaltyfaq                       /royalty                301
+/nominateroyalty                  /royalty                301
+/contact-us                       /contact                301
+/newsletter                       /                       301

@@ -1,0 +1,105 @@
+---
+import Base from '../layouts/Base.astro';
+import Ridge from '../components/Ridge.astro';
+import Icon from '../components/Icon.astro';
+import Countdown from '../components/Countdown.astro';
+import { parade } from '../data/events';
+import { history } from '../data/history';
+import { links, site } from '../data/site';
+---
+<Base title="2027 Parade Info" description="2027 Asheville Mardi Gras Parade — The Roaring 20's. Sunday, February 7th, 2027 in the South Slope, followed by the Queen's Ball." ridgeFrom="var(--purple-deep)">
+  <header class="page-hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">The Main Event</p>
+        <h1>{parade.year} Parade Info</h1>
+        <div class="hero-theme">THEME: {parade.theme}</div>
+        <p class="lede">This year we have a number of events going on all weekend so scroll down for info on all that's happening!!!</p>
+        <Countdown target={parade.start} />
+      </div>
+      <figure class="framed" style="max-width:420px;justify-self:center;transform:rotate(2deg)">
+        <img src="/images/site/parade-rain-or-shine.webp" alt="The parade rolls rain or shine!" width="1024" height="1024" />
+      </figure>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top:clamp(20px,3vw,40px)">
+    <div class="wrap split" style="align-items:start">
+      <div class="panel panel--gold">
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">The Main Event</h2>
+        <dl class="facts">
+          <dt>When</dt><dd>Sunday, February 7th, 2027</dd>
+          <dt>Line up</dt><dd>{parade.lineUp}</dd>
+          <dt>Start</dt><dd>{parade.startLabel}</dd>
+          <dt>Ends</dt><dd>6:00 PM</dd>
+          <dt>Location</dt><dd>{parade.location}<br /><small>South Slope Brewing District, Asheville, NC 28801</small></dd>
+          <dt>Theme</dt><dd>{parade.theme}</dd>
+        </dl>
+        <p>This parade is our gift to the city, a zany, exuberant and irreverent downtown event in the dead of winter.</p>
+        <p>We invite residents to get together with friends, neighbors, and coworkers to create high-quality, surprising and entertaining entries, add upbeat music, and strut their stuff tossing those ubiquitous beads to the crowd. Zaniness, political satire, and amazing displays of populist art appreciated!</p>
+        <p style="margin:0"><strong>We love and respect our community, and Asheville is not Bourbon Street.</strong> Alcohol and nudity are not part of our twist on Mardi Gras in the mountains. We are promoting a fun, safe event for all ages – with a definite emphasis on FUN!</p>
+      </div>
+      <div class="center">
+        <p class="eyebrow">Parade Route</p>
+        <a class="map-link" href="/images/site/parade-map.webp" target="_blank" rel="noopener">
+          <img src="/images/site/parade-map.webp" alt="Parade route map of the South Slope: line up along Coxe Avenue, looping through the brewery district" width="385" height="621" />
+        </a>
+        <p class="form-note" style="margin-top:1rem">Click on Map for full page version</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--parchment">
+    <div class="wrap grid-2">
+      <article class="panel">
+        <h3 class="display" style="font-weight:400;font-size:1.8rem;color:var(--purple)">Volunteer for the parade</h3>
+        <p>Help set up barriers, guide crowd flow, and keep the fun rolling safely.</p>
+        <a class="btn btn--purple" href={links.paradeVolunteer} rel="noopener">Click here for more info</a>
+      </article>
+      <article class="panel">
+        <h3 class="display" style="font-weight:400;font-size:1.8rem;color:var(--purple)">Want to be in the parade?</h3>
+        <p>Join an existing krewe or start your own.</p>
+        <a class="btn btn--purple" href="/krewes">Check out our krewe page for more info</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="queens-ball">
+    <div class="wrap split">
+      <figure class="framed">
+        <img src="/images/site/queens-ball.webp" alt="The Queen's Ball" width="1080" height="1080" loading="lazy" />
+      </figure>
+      <div>
+        <p class="eyebrow">After the Parade</p>
+        <h2>The Queen's Ball</h2>
+        <p class="tag" style="margin-bottom:0.8rem">Sunday, Feb 7, 2027 · 6:30 PM – 10:30 PM</p>
+        <p><strong>Official Queen's Ball kicks off after the parade at the Funkatorium (5:30 ish)</strong><br />
+          <a href={site.funkatorium.url} rel="noopener">{site.funkatorium.name}</a>, 147 Coxe Ave, Asheville, NC 28801, USA</p>
+        <p>There will be dancing, live music, and the Awards ceremony. Awards for Krewe of Distinction, Best Costume, and the Rob Seven Award (a member who has exemplified the Mardi Gras spirit) will be announced.</p>
+        <p>People will have a chance to mingle with the krewes, eat, drink, dance and be merry, maybe even meet the Royals.</p>
+        <p>It's a chance for Krewe members to see other krewes' costumes and hang out with each other.</p>
+        <img src="/images/site/sponsor-funkatorium.png" alt="Funkatorium" width="240" style="width:240px;mix-blend-mode:multiply;margin-top:1rem" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <Ridge top="var(--cream)" bottom="var(--purple-deep)" />
+  <section class="section section--purple" id="history">
+    <div class="wrap narrow">
+      <p class="eyebrow" style="color:var(--gold-soft)">History Lesson</p>
+      <h2>Themes &amp; royalty through the years</h2>
+      <ol class="timeline">
+        {[...history].reverse().map((h) => (
+          <li>
+            <span class="yr">{h.year}</span>
+            <div>
+              <span class="theme">{h.theme}</span>
+              {h.royalty && <span class="royals">{h.royalty}</span>}
+            </div>
+          </li>
+        ))}
+      </ol>
+      <p style="margin-top:2rem"><a class="fb-link" href={site.facebookShare} rel="noopener"><Icon name="facebook" /> Asheville Mardi Gras on Facebook</a></p>
+    </div>
+  </section>
+</Base>

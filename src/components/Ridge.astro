@@ -1,0 +1,10 @@
+---
+// Layered Blue Ridge silhouette used as a section divider.
+interface Props { top?: string; bottom?: string; }
+const { top = 'var(--cream)', bottom = 'var(--purple-deep)' } = Astro.props;
+---
+<svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style={`background:${top}`}>
+  <path fill="var(--teal)" opacity="0.55" d="M0 70 L120 38 L230 62 L360 18 L470 54 L600 30 L720 64 L860 22 L990 58 L1110 28 L1240 60 L1350 34 L1440 52 V120 H0Z" />
+  <path fill="var(--green)" opacity="0.8" d="M0 92 L90 70 L200 88 L320 56 L450 86 L560 66 L690 92 L820 60 L950 90 L1080 64 L1200 88 L1320 62 L1440 80 V120 H0Z" />
+  <path fill={bottom} d="M0 108 C160 92 260 112 400 100 S640 88 780 104 1040 92 1180 106 1360 96 1440 102 V120 H0Z" />
+</svg>

@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import EventTickets from '../../components/EventTickets.astro';
+import { events } from '../../data/events';
+import { site } from '../../data/site';
+---
+<Base title="Calendar of Events" description="Upcoming Asheville Mardi Gras events: the Cajun Cookoff, Twelfth Night, the annual parade and the Queen's Ball.">
+  <PageHero eyebrow="Calendar of Events" title="Upcoming Events" lede="Asheville Mardi Gras plans entertaining events year-round! Check here to find out what's coming up." />
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <EventTickets events={events} />
+      <div class="recurring">
+        <img src="/images/site/cleanup.webp" alt="helping to clean up" width="720" height="960" loading="lazy" />
+        <div>
+          <span class="tag">Recurring</span>
+          <h3>Fourth Sunday of the month — street cleanup</h3>
+          <p>11 a.m. behind Burial Brewing South Slope. This tends to be loosely organized and the best way to be sure it is happening is to <a href={site.facebook} rel="noopener">follow AMG on Facebook</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

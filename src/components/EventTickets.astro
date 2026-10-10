@@ -1,0 +1,67 @@
+---
+import type { AmgEvent } from '../data/events';
+import Icon from './Icon.astro';
+interface Props { events: AmgEvent[]; limit?: number; }
+const { events, limit } = Astro.props;
+const sorted = [...events].sort((a, b) => a.start.localeCompare(b.start));
+const tz = 'America/New_York';
+const fmt = (iso: string, opts: Intl.DateTimeFormatOptions) =>
+  new Intl.DateTimeFormat('en-US', { timeZone: tz, ...opts }).format(new Date(iso));
+const timeRange = (e: AmgEvent) =>
+  `${fmt(e.start, { hour: 'numeric', minute: '2-digit' })} – ${fmt(e.end, { hour: 'numeric', minute: '2-digit' })}`;
+---
+<div class="tickets" data-tickets data-limit={limit ?? ''}>
+  {sorted.map((e) => (
+    <article class="ticket" data-start={e.start} data-end={e.end}>
+      <span class="flag" hidden></span>
+      <div class="ticket-date" aria-hidden="true">
+        <span class="dow">{fmt(e.start, { weekday: 'short' })}</span>
+        <span class="day">{fmt(e.start, { day: 'numeric' })}</span>
+        <span class="mon">{fmt(e.start, { month: 'short' })}</span>
+        <span class="yr">{fmt(e.start, { year: 'numeric' })}</span>
+      </div>
+      <div class="ticket-body">
+        <div>
+          <h3><a href={e.href}>{e.title}</a></h3>
+          <div class="ticket-meta">
+            <span><span class="visually-hidden">Date: </span>{fmt(e.start, { weekday: 'long', month: 'long', day: 'numeric' })}</span>
+            <span>{timeRange(e)}</span>
+            <span>{e.venue}</span>
+          </div>
+          <p>{e.summary}</p>
+          <div class="btn-row">
+            <a class="btn btn--sm btn--purple" href={e.href}>{e.cta} <Icon name="arrow" size={16} /></a>
+            {e.tickets && <a class="btn btn--sm" href={e.tickets} rel="noopener">Tickets <Icon name="ticket" size={16} /></a>}
+          </div>
+        </div>
+        <img class="ticket-art" src={e.image} alt="" width="120" height="120" loading="lazy" />
+      </div>
+    </article>
+  ))}
+</div>
+<p class="tickets-empty" hidden>No upcoming events posted right now — follow us on Facebook for the latest!</p>
+<script>
+  // Hide events that have ended and flag ones happening soon, using the visitor's clock.
+  document.querySelectorAll<HTMLElement>('[data-tickets]').forEach((list) => {
+    const now = new Date();
+    const limit = Number(list.dataset.limit) || Infinity;
+    const dayKey = (d: Date) => d.toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+    const today = dayKey(now);
+    const tomorrow = dayKey(new Date(now.getTime() + 86400000));
+    let shown = 0;
+    list.querySelectorAll<HTMLElement>('.ticket').forEach((t) => {
+      const start = new Date(t.dataset.start!);
+      const end = new Date(t.dataset.end!);
+      if (end < now || shown >= limit) { t.remove(); return; }
+      shown++;
+      const flag = t.querySelector<HTMLElement>('.flag')!;
+      let label = '';
+      if (start <= now) label = 'Happening now!';
+      else if (dayKey(start) === today) label = 'Today!';
+      else if (dayKey(start) === tomorrow) label = 'Tomorrow!';
+      else if (shown === 1) label = 'Next up';
+      if (label) { flag.textContent = label; flag.hidden = false; }
+    });
+    if (!shown) list.nextElementSibling?.removeAttribute('hidden');
+  });
+</script>

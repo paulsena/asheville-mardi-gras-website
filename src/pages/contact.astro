@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import MailForm from '../components/MailForm.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+---
+<Base title="Contact" description="Get in touch with Asheville Mardi Gras.">
+  <PageHero eyebrow="Contact Us" title="Let us know what's on your mind" />
+  <section class="section" style="padding-top:0">
+    <div class="wrap split" style="align-items:start">
+      <div class="panel">
+        <MailForm subject="Message from the Asheville Mardi Gras website">
+          <label>What's your name? <input name="name" required autocomplete="name" /></label>
+          <label>What's your email? <input type="email" name="email" required autocomplete="email" /></label>
+          <label>What's on your mind? Let us know! <textarea name="message" required></textarea></label>
+        </MailForm>
+      </div>
+      <div class="stack">
+        <p class="lede">Or send an email to: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+        <p>Krewe questions? Email the Krewe Coordinator: <a href={`mailto:${site.kreweEmail}`}>{site.kreweEmail}</a></p>
+        <p><a class="btn btn--purple" href={site.facebook} rel="noopener"><Icon name="facebook" /> Follow us on Facebook</a></p>
+      </div>
+    </div>
+  </section>
+</Base>

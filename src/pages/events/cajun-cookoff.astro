@@ -1,0 +1,102 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Icon from '../../components/Icon.astro';
+import { links, site } from '../../data/site';
+
+const chefs = [
+  { name: 'Chef Mark "Dragon" Dennard', bio: [
+    'Hello there I\'m Chef Mark "Dragon" Dennard',
+    'Serving Western North Carolina and East Tennessee for 5 years as a personal chef providing high quality meals in your home, VRBO, Airbnb or holiday cabin. With over 30 years in restaurants across NC, GA and TN. I have developed my culinary experience in the kitchens serving various clientele multiple cuisines.',
+  ], link: { href: links.chefMarkDragon, label: 'Check out my website at www.chefmarkdragon.com' } },
+  { name: 'Francis Crochet', bio: [
+    "Francis Crochet is a transplanted Cajun, originally from Prairieville, LA that has been in NC since 1989 and in WNC since 2019. He wasn't taught to cook, but both parents were excellent cooks, and he learned what food is supposed to taste like. Francis is the President of Asheville Mardi Gras, Inc. When not cooking or baking, he plays euphonium in the Hendersonville Community Band, the Brevard Community Band, and the Blue Ridge Symphonic Brass. He has also just joined the Blue Ridge Consort, singing tenor. Finally, he is taking classes through the NC State Cooperative Extension service, working toward his Master Gardener Certification.",
+  ] },
+  { name: 'Echo Parry and Jason West', team: 'Bayou to the Blue Ridge', bio: [
+    'Born in New Orleans, Jason spent the past year sharing his Cajun roots and love of cooking with Echo. What began as a fun idea between the two quickly grew into a team effort when Echo recruited her Asheville friends, Jeremy and Hazel, who share the same passion for cooking and adventure. Now, one Cajun and three mountain locals are joining forces to bring a little bayou flavor to the Blue Ridge! United by friendship, food, and a love of good times, we’re ready to spice things up!',
+  ] },
+  { name: 'Henry Sink', bio: [
+    "Henry Sink is a local graduate of AB-Tech's culinary arts program. He has competed in the Cajun Cook-off before and was part of the winning team with chef Chris Moore on one occasion. When not working as a cook he enjoys gardening and tending to plants.",
+  ] },
+  { name: 'Stefanie Kompathoum', bio: [
+    'Stefanie Kompathoum is one half of this year\'s team representing the Krewe of Bastet, (The KayBees). She moved to WNC from "the toe of the boot" in 1985 when her parents moved to Dillsboro to open Lagniappe restaurant which featured Cajun, creole, and south Louisiana cooking. Her family is from Tangipahoa parish and surrounding area for generations. A staunch supporter of all things Mardi Gras, Stefanie is past Chair of the AMG Board, as well as Captain of the Krewe of Bastet, which has participated in AMG since 2010.',
+  ] },
+  { name: 'Beth Pressley-Hussaini', bio: [
+    'Beth is the other half of this year’s team known as The KayBees (a nickname for the Krewe of Bastet.) Beth Is a native of WNC. Her first experience with Cajun food was when she ate at Stefanie’s parents’ restaurant in Dillsboro, NC. Since then, her taste for Louisiana style dishes has continued to grow. She enjoys cooking creative takes on traditional dishes, which you will see at the Cookoff. The KayBee team took home third place in the amateur category at last year’s competition. Beth has volunteered as the Communications Chair for Asheville Mardi Gras for the past five years.',
+  ] },
+  { name: 'Pauline Heyne', bio: [
+    'Pauline Heyne runs the Purple Popping Party Krewe and is a new AMG Board Member. She is a mother to 3 boys and has been vegan/vegetarian for the last 15 years. She is an active ultimate frisbee player and certified yoga instructor.',
+  ] },
+  { name: 'Erik Donham', bio: [
+    'Paula and Erik Donham are a mother and son duo originally from South Louisiana, now in North Carolina and proud to share with you their family favorite recipes. Paula is a retired public school teacher. Her son Erik is a creative director helping people share stories worth talking about. They both appreciate great cooking and a good time. Laissez les bons temps rouler.',
+  ] },
+  { name: 'Reel and Dee Adams', bio: [
+    'Reel has been an Asheville local since 2016, coming from Clemson, SC! (Go Tigers!) His passion for Cajun food goes back to his grandparents Edmeé and Jerome Reel that hail from The Big Easy herself, New Orleans, LA. He grew up with crawfish boils, reading the Cajun Night Before Christmas every Christmas Eve, and celebrating Mardi Gras as a religious Holiday! He might not be a professional chef, but he is a professional, bonafide, Gumbo maker. It’s in his blood!',
+  ] },
+  { name: 'Brian Smith', bio: [
+    'Chef Brian Smith, formally of Rezaz and current owner of Baba Nahm and Dooogh located in the S&W Building introduces his newest concept... The Mission Grill - Affordable, Approachable Asheville Cuisine.',
+    'Having traveled, visited and experienced the New Orleans culture many times, he fell in love with the deep traditions of Cajun/ Creole Cuisine.',
+  ] },
+  { name: 'Joey Bender with Wicked Weed', bio: [] },
+  { name: 'Dane Barrager', bio: [] },
+];
+---
+<Base title="Cajun Cookoff" description="The Cajun Cookoff — Asheville Mardi Gras' main fundraiser at the Funkatorium, Sunday October 11, 2026.">
+  <PageHero eyebrow="Parade Fundraiser" title="Cajun Cookoff" lede="Promising to be the savory soiree of the year, the Cajun Cookoff is back!" />
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap split split--wide-left" style="align-items:start">
+      <div class="stack">
+        <p>This is our main fundraiser of the year and helps support the operation of our parade, so spread the word! We have 12 chefs this year offering plenty of samples to stuff yourself on!</p>
+        <p>This fais do-do features professional chefs and home cooks alike, delivering spicy samplings to the lucky few! So get your creole on for an afternoon of Louisiana-style cooking!</p>
+        <p>In addition to tasting time, there will be music. There will also be a 50/50 cash raffle (must be present to win.) Once tasting time is over, stick around for the dance party!</p>
+        <p>Laissez les bon temps rouler! Treat yourself to the flavors of Louisiana cuisine cooked by over 15 professional and home chefs. While filling your belly, Two-step your way to happiness with Asheville's own 2nd Line band and Canjun music by Jackomo Cajun Country Band.</p>
+        <p>The final details are in the works! Follow us on <a href={site.facebook} rel="noopener">Facebook</a> and Instagram so you know all the what dat!</p>
+        <p>If you are interested in volunteering or entering as a cook (business or home chef), please email at: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+        <p>Of course, if you really want the inside scoop, become a supporting member of Asheville Mardi Gras! It is very easy and helps support the parade. <a href="/membership">Click Here!</a></p>
+      </div>
+      <aside class="panel panel--gold" style="position:relative">
+        <span class="burst" style="right:-18px;top:-30px;--size:88px">12<br />Chefs!</span>
+        <dl class="facts">
+          <dt>Date</dt><dd>Sunday, October 11 2026</dd>
+          <dt>Time</dt><dd>2:00–5:00 p.m.</dd>
+          <dt>Location</dt><dd>The Funkatorium<br />147 Coxe Avenue<br />Asheville, NC 28801</dd>
+        </dl>
+        <p><strong>Buy your tickets now!</strong> $35 for members, $40 non, and $45 at the door.</p>
+        <a class="btn btn--purple" href={links.cookoffTickets} rel="noopener"><Icon name="ticket" size={18} /> Buy Tickets</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--parchment">
+    <div class="wrap">
+      <div class="krewe-strip" style="margin-bottom:0.6rem">
+        <img src="/images/site/cookoff-royals.webp" alt="king and queen" width="1400" height="997" loading="lazy" style="border-radius:10px;aspect-ratio:4/3;object-fit:cover" />
+        <img src="/images/site/cookoff-fun.webp" alt="having fun" width="1280" height="857" loading="lazy" style="border-radius:10px;aspect-ratio:4/3;object-fit:cover" />
+        <img src="/images/site/cookoff-a2l.webp" alt="A2L" width="1280" height="876" loading="lazy" style="border-radius:10px;aspect-ratio:4/3;object-fit:cover" />
+      </div>
+      <p class="form-note">Neil Jacobs photos · <a href="/gallery#2025-cajun-cookoff">See the 2025 Cookoff album</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Chef Write-ups – Cajun Cookoff 2026</p>
+          <h2>12 Chefs!</h2>
+        </div>
+      </div>
+      <div class="chefs">
+        {chefs.map((c) => (
+          <article class="chef">
+            <h3>{c.name}</h3>
+            {c.team && <p><strong>Team name: {c.team}</strong></p>}
+            {c.bio.map((p) => <p>{p}</p>)}
+            {c.link && <p><a href={c.link.href} rel="noopener">{c.link.label}</a></p>}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

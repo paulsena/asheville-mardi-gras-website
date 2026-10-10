@@ -1,0 +1,110 @@
+---
+import '../styles/global.css';
+import { nav, site } from '../data/site';
+import Icon from '../components/Icon.astro';
+import Ridge from '../components/Ridge.astro';
+import SponsorGrid from '../components/SponsorGrid.astro';
+
+interface Props { title?: string; description?: string; ridgeFrom?: string; }
+const {
+  title,
+  description = 'Asheville Mardi Gras is an all-volunteer, non-profit arts and culture group bringing New Orleans-style parades, parties and frivolity to the mountains.',
+  ridgeFrom = 'var(--cream)',
+} = Astro.props;
+const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | Parade, Events & Krewes`;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => path === href || path.startsWith(href + '/');
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL('/images/site/event-parade-2027.webp', Astro.site)} />
+    <meta name="theme-color" content="#4a1d6b" />
+    <link rel="icon" href="/images/site/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Shrikhand&display=swap"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="/" aria-label="Asheville Mardi Gras home">
+          <img src="/images/site/logo.png" alt="" width="56" height="56" />
+          <span>Asheville<br />Mardi Gras<small>In the Mountains</small></span>
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+          <Icon name="mask" size={18} /> Menu
+        </button>
+        <nav class="nav" id="site-nav" aria-label="Main">
+          {nav.map((item) => (
+            <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
+          ))}
+          <a class="btn btn--sm" href="/membership">Become a Member</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <Ridge top={ridgeFrom} bottom="var(--purple-deep)" />
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img src="/images/site/logo.png" alt="Asheville Mardi Gras logo" width="120" height="120" loading="lazy" />
+            <p><strong>{site.tagline}</strong></p>
+            <p>An all-volunteer 501(c)(3) non-profit strengthening community connections through creativity, frivolity and celebration.</p>
+          </div>
+          <div>
+            <h2>Explore</h2>
+            <ul class="footer-links">
+              <li><a href="/">Home</a></li>
+              <li><a href="/events">Calendar of Events</a></li>
+              <li><a href="/parade">Parade</a></li>
+              <li><a href="/krewes">Krewes</a></li>
+              <li><a href="/gallery">Gallery</a></li>
+              <li><a href="/get-involved">Get Involved</a></li>
+              <li><a href="/membership">Membership</a></li>
+              <li><a href="/volunteer">Volunteer</a></li>
+              <li><a href="/royalty">Royalty</a></li>
+              <li><a href="/second-line">Second Line Band</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Contact Us</h2>
+            <p><a class="btn btn--sm" href="/contact"><Icon name="mail" size={16} /> Contact Us</a></p>
+            <p>Or send an email to: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+            <p><a class="fb-link" href={site.facebook} rel="noopener"><Icon name="facebook" /> Follow us on Facebook</a></p>
+          </div>
+        </div>
+        <h2>We Love Our Sponsors <small style="font-family:var(--font-body);font-size:0.9rem;color:var(--cream)">(click logo for more info)</small></h2>
+        <SponsorGrid />
+        <div class="footer-bottom">
+          <span>© {new Date().getFullYear()} Asheville Mardi Gras, Inc. · Asheville, North Carolina</span>
+          <span>Asheville is not Bourbon Street — fun for all ages!</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+      const nav = document.getElementById('site-nav');
+      toggle?.addEventListener('click', () => {
+        const open = nav!.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+    </script>
+  </body>
+</html>

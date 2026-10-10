@@ -1,0 +1,31 @@
+---
+// Progressive form: posts to FORM_ENDPOINT when configured, otherwise opens a pre-filled email.
+import { FORM_ENDPOINT, site } from '../data/site';
+interface Props { subject: string; submitLabel?: string; class?: string; }
+const { subject, submitLabel = 'Send', class: cls = 'form' } = Astro.props;
+---
+<form class={cls} data-mailform data-subject={subject} data-to={site.email} action={FORM_ENDPOINT || undefined} method="post">
+  <slot />
+  <div><button class="btn btn--purple" type="submit">{submitLabel}</button></div>
+  <p class="form-status" role="status" hidden>Thanks! Message sent. We'll get back to you just as soon as we can.</p>
+</form>
+<script>
+  document.querySelectorAll<HTMLFormElement>('[data-mailform]').forEach((form) => {
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      const data = new FormData(form);
+      const status = form.querySelector<HTMLElement>('.form-status')!;
+      if (form.getAttribute('action')) {
+        const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        if (res.ok) { form.reset(); status.hidden = false; }
+        return;
+      }
+      const lines: string[] = [];
+      for (const [k, v] of data.entries()) if (String(v).trim()) lines.push(`${k}: ${v}`);
+      const href = `mailto:${form.dataset.to}?subject=${encodeURIComponent(form.dataset.subject!)}&body=${encodeURIComponent(lines.join('\n'))}`;
+      window.location.href = href;
+      status.textContent = 'Your email app should open with your message ready to send.';
+      status.hidden = false;
+    });
+  });
+</script>

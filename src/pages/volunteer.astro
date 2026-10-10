@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import MailForm from '../components/MailForm.astro';
+import { links, site } from '../data/site';
+---
+<Base title="Volunteer" description="Volunteer with Asheville Mardi Gras: parade barriers, event set-up, leadership roles and more.">
+  <PageHero eyebrow="Volunteer" title="Many hands make the parade" lede="Becoming a volunteer is super easy, just fill out the email below and we'll get back to you about upcoming opportunities.">
+    <div class="btn-row">
+      <a class="btn btn--purple" href={links.paradeVolunteer} rel="noopener">Volunteer for the parade: click here for more info</a>
+    </div>
+  </PageHero>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap split" style="align-items:start">
+      <div class="stack">
+        <article class="panel">
+          <h2 style="font-size:clamp(1.5rem,3vw,2rem)">General Volunteers</h2>
+          <p>Regular volunteers are what make our events happen. You show up, help, enjoy the event and leave. Easy Peasy.</p>
+          <ul><li>set-up (decorations tables etc)</li><li>clean-up</li><li>check tickets</li><li>sell t-shirts, merch</li><li>other stuff</li></ul>
+        </article>
+        <article class="panel">
+          <h2 style="font-size:clamp(1.5rem,3vw,2rem)">Leadership Roles</h2>
+          <p>If you have some time and skills there are leadership roles that need filling</p>
+          <ul>
+            <li><strong>Business Liaison:</strong> coordinates with the local businesses to secure locations for events, sponsorships etc. Need to show up for monthly meetings and be involved.</li>
+            <li><strong>Vice President on executive Board:</strong> Sit at the big table and help guide the organization. Need to show up for monthly meetings and be involved.</li>
+            <li><strong>Volunteer Organizer:</strong> Can you organize cats? Then this is for you! Help the event coordinator organize the volunteers, assign who is doing what and when. It's big fun!</li>
+            <li><strong>Make your own position.</strong> If you have time and skills and see a need, let us know what you would like to do. We love people with energy</li>
+            <li>other stuff</li>
+          </ul>
+        </article>
+      </div>
+      <div class="panel panel--gold">
+        <h2 style="font-size:clamp(1.5rem,3vw,2rem)">For other volunteer opportunities</h2>
+        <MailForm subject="Volunteering with Asheville Mardi Gras">
+          <label>Name <input name="name" required autocomplete="name" /></label>
+          <label>Email <input type="email" name="email" required autocomplete="email" /></label>
+          <fieldset>
+            <legend>I'm interested in</legend>
+            <label class="check"><input type="checkbox" name="interest" value="General Volunteers" /> General Volunteers</label>
+            <label class="check"><input type="checkbox" name="interest" value="Leadership Roles" /> Leadership Roles</label>
+            <label class="check"><input type="checkbox" name="interest" value="other stuff" /> other stuff</label>
+          </fieldset>
+          <label>Anything else? <textarea name="message"></textarea></label>
+        </MailForm>
+        <p class="form-note" style="margin-top:1rem">Or send an email to: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+      </div>
+    </div>
+  </section>
+</Base>

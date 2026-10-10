@@ -1,0 +1,182 @@
+{
+ "cleanup": {
+  "w": 720,
+  "h": 960
+ },
+ "cookoff-a2l": {
+  "w": 1280,
+  "h": 876
+ },
+ "cookoff-fun": {
+  "w": 1280,
+  "h": 857
+ },
+ "cookoff-royals": {
+  "w": 1400,
+  "h": 997
+ },
+ "event-cajun-cookoff": {
+  "w": 1024,
+  "h": 1024
+ },
+ "event-parade-2027": {
+  "w": 1024,
+  "h": 1024
+ },
+ "event-queens-ball": {
+  "w": 1024,
+  "h": 1024
+ },
+ "event-twelfth-night": {
+  "w": 1024,
+  "h": 1024
+ },
+ "home-1": {
+  "w": 828,
+  "h": 622
+ },
+ "home-2": {
+  "w": 1050,
+  "h": 1400
+ },
+ "home-3": {
+  "w": 1400,
+  "h": 1219
+ },
+ "home-4": {
+  "w": 960,
+  "h": 847
+ },
+ "home-5": {
+  "w": 931,
+  "h": 1400
+ },
+ "home-6": {
+  "w": 1400,
+  "h": 1050
+ },
+ "home-7": {
+  "w": 1400,
+  "h": 933
+ },
+ "home-8": {
+  "w": 960,
+  "h": 807
+ },
+ "home-facebook": {
+  "w": 351,
+  "h": 339
+ },
+ "involved-donate": {
+  "w": 1000,
+  "h": 1000
+ },
+ "involved-members": {
+  "w": 1080,
+  "h": 1065
+ },
+ "krewe-1": {
+  "w": 960,
+  "h": 847
+ },
+ "krewe-2": {
+  "w": 1400,
+  "h": 933
+ },
+ "krewe-3": {
+  "w": 1400,
+  "h": 787
+ },
+ "krewe-4": {
+  "w": 1400,
+  "h": 1050
+ },
+ "krewe-5": {
+  "w": 1080,
+  "h": 557
+ },
+ "krewe-6": {
+  "w": 1400,
+  "h": 1050
+ },
+ "krewe-7": {
+  "w": 1400,
+  "h": 1050
+ },
+ "krewe-photo": {
+  "w": 921,
+  "h": 1074
+ },
+ "logo": {
+  "w": 1024,
+  "h": 1024
+ },
+ "member-baron-baroness": {
+  "w": 300,
+  "h": 300
+ },
+ "member-individual": {
+  "w": 300,
+  "h": 300
+ },
+ "member-lord-lady": {
+  "w": 300,
+  "h": 300
+ },
+ "parade-map": {
+  "w": 385,
+  "h": 621
+ },
+ "parade-rain-or-shine": {
+  "w": 1024,
+  "h": 1024
+ },
+ "queens-ball": {
+  "w": 1080,
+  "h": 1080
+ },
+ "second-line-band": {
+  "w": 720,
+  "h": 448
+ },
+ "sponsor-arts-avl": {
+  "w": 313,
+  "h": 161
+ },
+ "sponsor-asheville-fm": {
+  "w": 400,
+  "h": 222
+ },
+ "sponsor-banks-ave": {
+  "w": 214,
+  "h": 235
+ },
+ "sponsor-buncombe": {
+  "w": 400,
+  "h": 400
+ },
+ "sponsor-city-of-asheville": {
+  "w": 319,
+  "h": 400
+ },
+ "sponsor-explore-asheville": {
+  "w": 276,
+  "h": 113
+ },
+ "sponsor-funkatorium": {
+  "w": 700,
+  "h": 329
+ },
+ "sponsor-green-man": {
+  "w": 400,
+  "h": 400
+ },
+ "sponsor-green-mountain": {
+  "w": 227,
+  "h": 164
+ },
+ "sponsor-nc-arts": {
+  "w": 252,
+  "h": 176
+ }
+}
