@@ -1,0 +1,29 @@
+---
+import { parade } from '../data/events';
+import dims from '../data/image-dims.json';
+import { withBase } from '../utils/url';
+import Ridge from './Ridge.astro';
+
+interface Props { linkToParade?: boolean; }
+const { linkToParade = false } = Astro.props;
+const image = {
+  src: withBase(parade.banner.src),
+  alt: parade.banner.alt,
+  width: dims['parade-banner-2027'].w,
+  height: dims['parade-banner-2027'].h,
+};
+---
+<div class="parade-banner-stage">
+<div class="wrap parade-banner">
+  <div class="parade-banner-art">
+  {linkToParade ? (
+    <a href={withBase('/parade')} aria-label={`${parade.year} parade information`}>
+      <img {...image} loading="lazy" decoding="async" />
+    </a>
+  ) : (
+    <img {...image} loading="lazy" decoding="async" />
+  )}
+  </div>
+</div>
+<Ridge top="var(--cream)" bottom="var(--cream)" />
+</div>

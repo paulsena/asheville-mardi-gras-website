@@ -5,6 +5,8 @@ import Ridge from '../components/Ridge.astro';
 import Icon from '../components/Icon.astro';
 import Countdown from '../components/Countdown.astro';
 import EventTickets from '../components/EventTickets.astro';
+import HeroCollage from '../components/HeroCollage.astro';
+import ParadeBanner from '../components/ParadeBanner.astro';
 import MailForm from '../components/MailForm.astro';
 import { events, parade } from '../data/events';
 import { site, links } from '../data/site';
@@ -32,15 +34,11 @@ const img = (name: keyof typeof dims) => ({ src: withBase(`/images/site/${name}.
           <a class="btn" href={withBase('/krewes')}>Want to be in the parade?</a>
         </div>
       </div>
-      <div class="hero-collage" aria-hidden="true">
-        <span class="burst" style="left:-14px;top:38%;">Rain<br />or<br />Shine!</span>
-        <figure class="p1"><span class="tape"></span><img {...img('home-6')} alt="" fetchpriority="high" /></figure>
-        <figure class="p2"><img src={withBase('/images/site/event-parade-2027.webp')} width="1024" height="1024" alt="" /></figure>
-        <figure class="p3"><span class="tape"></span><img {...img('home-7')} alt="" /></figure>
-        <figure class="p4"><img {...img('home-2')} alt="" /></figure>
-      </div>
+      <HeroCollage />
     </div>
   </section>
+
+  <ParadeBanner linkToParade />
 
   <!-- Upcoming events -->
   <section class="section" id="upcoming">

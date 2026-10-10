@@ -73,6 +73,10 @@ export const events: AmgEvent[] = [
 export const parade = {
   year: 2027,
   theme: "The Roaring 20's",
+  banner: {
+    src: '/images/site/parade-banner-2027.webp',
+    alt: 'Asheville Mardi Gras presents Roaring Twenties 2027, with mountain scenery, an Art Deco border, beads, and a Mardi Gras mask.',
+  },
   start: '2027-02-07T15:05:00-05:00',
   lineUp: '12:00pm line up begins',
   startLabel: '3:05 Parade Start',

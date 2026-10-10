@@ -174,7 +174,7 @@ li { margin-bottom: 0.35em; }
 
 /* --- hero -------------------------------------------------------------- */
 .hero { position: relative; padding-top: clamp(28px, 5vw, 64px); overflow: hidden; }
-.hero-grid { display: grid; gap: clamp(28px, 4vw, 56px); align-items: center; grid-template-columns: 1.05fr 1fr; }
+.hero-grid { width: min(100% - 2 * var(--gutter), calc(var(--wrap) + 160px)); display: grid; gap: clamp(28px, 4vw, 56px); align-items: center; grid-template-columns: 1fr 1.3fr; }
 @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
 .hero h1 { margin-bottom: 0.25em; }
 .hero h1 .accent { color: var(--green); display: block; }
@@ -188,6 +188,7 @@ li { margin-bottom: 0.35em; }
 .hero-facts li { display: flex; align-items: center; gap: 0.45em; margin: 0; }
 .hero-facts svg { color: var(--green); flex-shrink: 0; }
 
+.hero-photo-group { min-width: 0; }
 .hero-collage { position: relative; aspect-ratio: 1 / 0.95; }
 .hero-collage figure { position: absolute; margin: 0; background: var(--paper); padding: 8px 8px 30px; box-shadow: var(--shadow-soft); border-radius: 4px; }
 .hero-collage figure img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; }
@@ -196,6 +197,13 @@ li { margin-bottom: 0.35em; }
 .hero-collage .p3 { width: 50%; height: 48%; right: 4%; bottom: 0; transform: rotate(-2deg); z-index: 3; }
 .hero-collage .p4 { width: 36%; height: 34%; left: 8%; bottom: 0; transform: rotate(6deg); z-index: 1; }
 .tape { position: absolute; top: -12px; left: 50%; width: 84px; height: 24px; transform: translateX(-50%) rotate(-4deg); background: rgba(244, 205, 98, 0.75); }
+
+/* --- parade banner ----------------------------------------------------- */
+.parade-banner { margin-top: clamp(28px, 4vw, 48px); }
+.parade-banner-art { padding: clamp(6px, 0.8vw, 10px); background: var(--parchment); border: 1px solid var(--line); box-shadow: var(--shadow-soft); }
+.parade-banner-art a { display: block; }
+.parade-banner img { width: 100%; height: auto; mix-blend-mode: multiply; }
+.parade-banner-stage > .ridge { height: clamp(44px, 5vw, 72px); margin-top: clamp(20px, 3vw, 36px); }
 
 /* --- countdown --------------------------------------------------------- */
 .countdown { display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 0 0 1.6rem; }

@@ -1,0 +1,64 @@
+---
+import gallery from '../data/gallery.json';
+import dims from '../data/image-dims.json';
+import { withBase } from '../utils/url';
+
+const photos = gallery.flatMap((album) => album.photos.map((photo) => ({
+  src: withBase(photo.src), width: photo.w, height: photo.h,
+})));
+const fallback = ['home-6', 'home-3', 'home-7', 'home-2'] as const;
+---
+<div class="hero-photo-group" data-hero-photos={JSON.stringify(photos)}>
+<div class="hero-collage" aria-hidden="true">
+  <span class="burst" style="left:-14px;top:38%;">Rain<br />or<br />Shine!</span>
+  {fallback.map((name, i) => (
+    <figure class={`p${i + 1}`}>
+      {(i === 0 || i === 2) && <span class="tape"></span>}
+      <img src={withBase(`/images/site/${name}.webp`)} width={dims[name].w} height={dims[name].h} alt="" />
+    </figure>
+  ))}
+</div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-hero-photos]').forEach((collage) => {
+    const photos: { src: string; width: number; height: number }[] =
+      JSON.parse(collage.dataset.heroPhotos!);
+    const images = collage.querySelectorAll<HTMLImageElement>('figure img');
+    let loading = false;
+    const rotate = async () => {
+      if (loading) return;
+      loading = true;
+      const current = new Set([...images].map((image) => image.getAttribute('src')));
+      const fresh = photos.filter((photo) => !current.has(photo.src));
+      const pool = [...(fresh.length >= images.length ? fresh : photos)];
+      // Choose distinct photos, excluding the previous set whenever possible.
+      const selected = [...images].map((_, i) => {
+        const j = i + Math.floor(Math.random() * (pool.length - i));
+        [pool[i], pool[j]] = [pool[j], pool[i]];
+        return pool[i];
+      });
+      try {
+        // Load the whole set before swapping to avoid blank frames.
+        await Promise.all(selected.map((photo) => {
+          const preload = new Image();
+          preload.src = photo.src;
+          return preload.decode();
+        }));
+        images.forEach((image, i) => {
+          image.width = selected[i].width;
+          image.height = selected[i].height;
+          image.src = selected[i].src;
+        });
+      } catch {
+        // Keep the current photos if a new image fails to load.
+      } finally {
+        loading = false;
+      }
+    };
+    void rotate();
+    window.setInterval(() => {
+      if (!document.hidden) void rotate();
+    }, 10_000);
+  });
+</script>

@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import Ridge from '../components/Ridge.astro';
 import Icon from '../components/Icon.astro';
 import Countdown from '../components/Countdown.astro';
+import ParadeBanner from '../components/ParadeBanner.astro';
 import { parade } from '../data/events';
 import { history } from '../data/history';
 import { links, site } from '../data/site';
@@ -23,6 +24,8 @@ import { links, site } from '../data/site';
       </figure>
     </div>
   </header>
+
+  <ParadeBanner />
 
   <section class="section" style="padding-top:clamp(20px,3vw,40px)">
     <div class="wrap split" style="align-items:start">
