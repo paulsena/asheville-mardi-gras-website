@@ -16,8 +16,10 @@ export const site = {
 };
 
 export const links = {
+  newsletterSignup: 'https://www.zeffy.com/en-US/embed/newsletter-form/subscribe-to-get-notified-about-new-events-111516',
+  volunteerSignup: 'https://www.zeffy.com/en-US/embed/newsletter-form/sign-up-for-our-volunteer-email-list-2',
   membershipCheckout: 'https://www.zeffy.com/en-US/ticketing/asheville-mardi-gras-membership',
-  donate: 'https://square.link/u/SjVlmjx5',
+  donate: 'https://www.zeffy.com/en-US/donation-form/support-asheville-mardi-gras',
   cookoffTickets: 'https://www.zeffy.com/en-US/ticketing/cajun-cookoff-2',
   twelfthNightTickets:
     'https://www.eventbrite.com/e/asheville-mardi-gras-twelfth-night-tickets-1976349819512?aff=oddtdtcreator',

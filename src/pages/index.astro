@@ -7,7 +7,7 @@ import Countdown from '../components/Countdown.astro';
 import EventTickets from '../components/EventTickets.astro';
 import HeroCollage from '../components/HeroCollage.astro';
 import ParadeBanner from '../components/ParadeBanner.astro';
-import MailForm from '../components/MailForm.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { events, parade } from '../data/events';
 import { site, links } from '../data/site';
 import dims from '../data/image-dims.json';
@@ -147,10 +147,7 @@ const img = (name: keyof typeof dims) => ({ src: withBase(`/images/site/${name}.
       <div>
         <h2>Join our mailing list!</h2>
         <p>Be the first to hear about Twelfth Night, the Cajun Cookoff, parade line-up and more.</p>
-        <MailForm subject="Add me to the Asheville Mardi Gras mailing list" submitLabel="Sign me up" class="inline-form">
-          <label class="visually-hidden" for="ml-email">Email address</label>
-          <input id="ml-email" type="email" name="email" placeholder="you@example.com" required />
-        </MailForm>
+        <NewsletterSignup />
       </div>
       <div class="panel panel--gold" style="color:var(--purple-deep)">
         <h3 style="color:var(--purple-deep)">Follow us on Facebook</h3>

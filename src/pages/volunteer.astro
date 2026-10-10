@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
-import MailForm from '../components/MailForm.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { links, site } from '../data/site';
 ---
 <Base title="Volunteer" description="Volunteer with Asheville Mardi Gras: parade barriers, event set-up, leadership roles and more.">
@@ -33,17 +33,7 @@ import { links, site } from '../data/site';
       </div>
       <div class="panel panel--gold">
         <h2 style="font-size:clamp(1.5rem,3vw,2rem)">For other volunteer opportunities</h2>
-        <MailForm subject="Volunteering with Asheville Mardi Gras">
-          <label>Name <input name="name" required autocomplete="name" /></label>
-          <label>Email <input type="email" name="email" required autocomplete="email" /></label>
-          <fieldset>
-            <legend>I'm interested in</legend>
-            <label class="check"><input type="checkbox" name="interest" value="General Volunteers" /> General Volunteers</label>
-            <label class="check"><input type="checkbox" name="interest" value="Leadership Roles" /> Leadership Roles</label>
-            <label class="check"><input type="checkbox" name="interest" value="other stuff" /> other stuff</label>
-          </fieldset>
-          <label>Anything else? <textarea name="message"></textarea></label>
-        </MailForm>
+        <NewsletterSignup src={links.volunteerSignup} title="Asheville Mardi Gras volunteer email signup powered by Zeffy" />
         <p class="form-note" style="margin-top:1rem">Or send an email to: <a href={`mailto:${site.email}`}>{site.email}</a></p>
       </div>
     </div>

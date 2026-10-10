@@ -2,7 +2,7 @@
 import { withBase } from '../utils/url';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
-import MailForm from '../components/MailForm.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { links } from '../data/site';
 ---
 <Base title="Get Involved" description="Become a member, volunteer, donate, or play with the Asheville Second Line band.">
@@ -46,10 +46,7 @@ import { links } from '../data/site';
   <section class="section section--parchment">
     <div class="wrap narrow center">
       <h2>Join our mailing list!</h2>
-      <MailForm subject="Add me to the Asheville Mardi Gras mailing list" submitLabel="Sign me up" class="inline-form">
-        <label class="visually-hidden" for="gi-email">Email address</label>
-        <input id="gi-email" type="email" name="email" placeholder="you@example.com" required />
-      </MailForm>
+      <NewsletterSignup />
     </div>
   </section>
 </Base>

@@ -1,0 +1,17 @@
+---
+import { links } from '../data/site';
+interface Props { src?: string; title?: string; }
+const {
+  src = links.newsletterSignup,
+  title = 'Asheville Mardi Gras email signup powered by Zeffy',
+} = Astro.props;
+---
+<div class="newsletter-signup">
+  <iframe
+    src={src}
+    title={title}
+    loading="lazy"
+    width="100%"
+    height="280"
+  ></iframe>
+</div>
