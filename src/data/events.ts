@@ -1,19 +1,26 @@
 // Upcoming events. Times are ISO-8601 with the Asheville UTC offset
 // (-04:00 during daylight time, -05:00 in winter). Past events hide automatically in the browser.
+import { links } from './site';
 
-export interface AmgEvent {
+interface EventDetails {
   slug: string;
   title: string;
-  start: string;
-  end: string;
   venue: string;
   address?: string;
   summary: string;
   image: string;
+  imageAlt?: string;
+  photoCredit?: { name: string; href: string };
   href: string;
   cta: string;
   tickets?: string;
 }
+
+// Tentative events stay visible until an exact date is announced.
+export type AmgEvent = EventDetails & (
+  | { start: string; end: string; dateTbd?: never }
+  | { start?: never; end?: never; dateTbd: { season: string; year: number } }
+);
 
 export const events: AmgEvent[] = [
   {
@@ -33,8 +40,8 @@ export const events: AmgEvent[] = [
   {
     slug: 'twelfth-night',
     title: 'Twelfth Night Masquerade Party',
-    start: '2027-01-06T19:00:00-05:00',
-    end: '2027-01-06T22:00:00-05:00',
+    start: '2027-01-09T19:00:00-05:00',
+    end: '2027-01-09T22:00:00-05:00',
     venue: 'Wicked Weed Funkatorium',
     address: '147 Coxe Ave, Asheville, NC 28801',
     summary:
@@ -42,6 +49,7 @@ export const events: AmgEvent[] = [
     image: '/images/site/event-twelfth-night.webp',
     href: '/events/twelfth-night',
     cta: 'More Info',
+    tickets: links.twelfthNightTickets,
   },
   {
     slug: 'parade-2027',
@@ -67,6 +75,21 @@ export const events: AmgEvent[] = [
     image: '/images/site/event-queens-ball.webp',
     href: '/parade#queens-ball',
     cta: 'Learn more',
+  },
+  {
+    slug: 'amg-member-picnic',
+    title: 'AMG Member Picnic',
+    dateTbd: { season: 'Spring', year: 2027 },
+    venue: 'Location TBD',
+    summary: 'Join us for the AMG Member Picnic in Spring 2027! Date, time, and location TBD. Check back for details.',
+    image: '/images/site/event-member-picnic.webp',
+    imageAlt: 'A picnic basket and blanket with waffles and berries beneath blooming spring trees.',
+    photoCredit: {
+      name: 'Svitlana',
+      href: 'https://unsplash.com/photos/picnic-spread-in-blooming-orchard-NjQ_gzJfeiw',
+    },
+    href: '/events/amg-member-picnic',
+    cta: 'More Info',
   },
 ];
 

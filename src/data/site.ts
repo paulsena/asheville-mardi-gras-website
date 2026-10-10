@@ -22,7 +22,7 @@ export const links = {
   donate: 'https://www.zeffy.com/en-US/donation-form/support-asheville-mardi-gras',
   cookoffTickets: 'https://www.zeffy.com/en-US/ticketing/cajun-cookoff-2',
   twelfthNightTickets:
-    'https://www.eventbrite.com/e/asheville-mardi-gras-twelfth-night-tickets-1976349819512?aff=oddtdtcreator',
+    'https://www.zeffy.com/en-US/ticketing/twelfth-night-party',
   twelfthNightVolunteer: 'https://signup.com/go/pRjEBki',
   paradeVolunteer: 'https://signup.com/client/invitation2/secure/12887100021/true#/invitation',
   kreweList: 'https://docs.google.com/document/d/1R7ev8ZWE8PrfZwspzSHdFEVXq2UtrZGiK5EEhaatKT0/edit?usp=sharing',

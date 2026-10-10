@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:wix": "SITE_URL=https://www.ashevillemardigras.org BASE_PATH=/ npm run build && node scripts/prepare-wix-static.mjs",
     "preview": "astro preview"
   },
   "dependencies": {

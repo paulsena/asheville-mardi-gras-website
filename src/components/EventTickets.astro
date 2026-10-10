@@ -4,11 +4,12 @@ import type { AmgEvent } from '../data/events';
 import Icon from './Icon.astro';
 interface Props { events: AmgEvent[]; limit?: number; }
 const { events, limit } = Astro.props;
-const sorted = [...events].sort((a, b) => a.start.localeCompare(b.start));
+// Keep tentative events after the scheduled dates.
+const sorted = [...events].sort((a, b) => (a.start ?? '9999').localeCompare(b.start ?? '9999'));
 const tz = 'America/New_York';
 const fmt = (iso: string, opts: Intl.DateTimeFormatOptions) =>
   new Intl.DateTimeFormat('en-US', { timeZone: tz, ...opts }).format(new Date(iso));
-const timeRange = (e: AmgEvent) =>
+const timeRange = (e: AmgEvent) => e.dateTbd ? 'Time TBD' :
   `${fmt(e.start, { hour: 'numeric', minute: '2-digit' })} – ${fmt(e.end, { hour: 'numeric', minute: '2-digit' })}`;
 ---
 <div class="tickets" data-tickets data-limit={limit ?? ''}>
@@ -16,16 +17,22 @@ const timeRange = (e: AmgEvent) =>
     <article class="ticket" data-start={e.start} data-end={e.end}>
       <span class="flag" hidden></span>
       <div class="ticket-date" aria-hidden="true">
+        {e.dateTbd ? <>
+          <span class="dow">{e.dateTbd.season}</span>
+          <span class="mon">Date TBD</span>
+          <span class="yr">{e.dateTbd.year}</span>
+        </> : <>
         <span class="dow">{fmt(e.start, { weekday: 'short' })}</span>
         <span class="day">{fmt(e.start, { day: 'numeric' })}</span>
         <span class="mon">{fmt(e.start, { month: 'short' })}</span>
         <span class="yr">{fmt(e.start, { year: 'numeric' })}</span>
+        </>}
       </div>
       <div class="ticket-body">
         <div>
           <h3><a href={withBase(e.href)}>{e.title}</a></h3>
           <div class="ticket-meta">
-            <span><span class="visually-hidden">Date: </span>{fmt(e.start, { weekday: 'long', month: 'long', day: 'numeric' })}</span>
+            <span><span class="visually-hidden">Date: </span>{e.dateTbd ? `${e.dateTbd.season} ${e.dateTbd.year} — Date TBD` : fmt(e.start, { weekday: 'long', month: 'long', day: 'numeric' })}</span>
             <span>{timeRange(e)}</span>
             <span>{e.venue}</span>
           </div>
@@ -35,7 +42,7 @@ const timeRange = (e: AmgEvent) =>
             {e.tickets && <a class="btn btn--sm" href={e.tickets} rel="noopener">Tickets <Icon name="ticket" size={16} /></a>}
           </div>
         </div>
-        <img class="ticket-art" src={withBase(e.image)} alt="" width="120" height="120" loading="lazy" />
+        <img class="ticket-art" src={withBase(e.image)} alt={e.imageAlt ?? ''} width="120" height="120" loading="lazy" />
       </div>
     </article>
   ))}
@@ -51,10 +58,11 @@ const timeRange = (e: AmgEvent) =>
     const tomorrow = dayKey(new Date(now.getTime() + 86400000));
     let shown = 0;
     list.querySelectorAll<HTMLElement>('.ticket').forEach((t) => {
-      const start = new Date(t.dataset.start!);
-      const end = new Date(t.dataset.end!);
-      if (end < now || shown >= limit) { t.remove(); return; }
+      const start = t.dataset.start ? new Date(t.dataset.start) : null;
+      const end = t.dataset.end ? new Date(t.dataset.end) : null;
+      if ((end && end < now) || shown >= limit) { t.remove(); return; }
       shown++;
+      if (!start) return; // No urgency badge for a date that is still TBD.
       const flag = t.querySelector<HTMLElement>('.flag')!;
       let label = '';
       if (start <= now) label = 'Happening now!';

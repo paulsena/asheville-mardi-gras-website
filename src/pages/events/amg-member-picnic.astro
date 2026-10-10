@@ -1,0 +1,30 @@
+---
+import { withBase } from '../../utils/url';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import { events } from '../../data/events';
+import dims from '../../data/image-dims.json';
+
+const event = events.find((event) => event.slug === 'amg-member-picnic')!;
+const imageDims = dims['event-member-picnic'];
+const date = `${event.dateTbd!.season} ${event.dateTbd!.year} — Date TBD`;
+---
+<Base title={event.title} description={event.summary}>
+  <PageHero eyebrow={date} title={event.title} lede={event.summary} />
+  <section class="section">
+    <div class="wrap split">
+      <figure class="framed">
+        <img src={withBase(event.image)} alt={event.imageAlt} width={imageDims.w} height={imageDims.h} />
+        {event.photoCredit && <figcaption class="form-note">Photo by <a href={event.photoCredit.href} rel="noopener">{event.photoCredit.name} on Unsplash</a>.</figcaption>}
+      </figure>
+      <div class="panel panel--green">
+        <dl class="facts">
+          <dt>Date</dt><dd>{date}</dd>
+          <dt>Time</dt><dd>TBD</dd>
+          <dt>Location</dt><dd>{event.venue}</dd>
+        </dl>
+        <a class="btn" href={withBase('/membership')}>Join or Renew Your Membership</a>
+      </div>
+    </div>
+  </section>
+</Base>

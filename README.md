@@ -25,6 +25,31 @@ SITE_URL=https://www.ashevillemardigras.org BASE_PATH=/ npm run build
 GitHub Pages does not process `public/_redirects`; those legacy Wix redirects apply
 only to Netlify / Cloudflare Pages hosting.
 
+## Wix static hosting
+
+`wix.config.json` links releases to **Asheville Mardi Gras Static**
+(`9d0ea25a-25a0-498d-8440-ff1c813d1d1d`), the live site at
+https://www.ashevillemardigras.org/.
+The domain and paid plan were reassigned to this static site, and the owner
+confirmed the new site is working. The old design is preserved in Wix as
+**AMG Old 2026-10-10**; the original Editor site remains in the account.
+
+```sh
+npm run build:wix
+npx --yes @wix/cli@latest login   # only when not already signed in
+npx --yes @wix/cli@latest release
+```
+
+Wix serves exact filenames, so `build:wix` prepares `.wix-static/dist/` with
+navigation to each page's `index.html`. It also generates `.wix-static/redirects.csv`
+for optional import in Wix's SEO & GEO → URL Redirect Manager → Import redirects.
+These preserve old incoming links; they are not required to publish the files.
+The wildcard `/event-details/*` rule is not supported by the CSV export;
+add individual legacy event redirects as needed. Wix does not process `_redirects`.
+
+The normal build, source content and dependencies remain independent of Wix.
+For a future move, use the domain build above and upload `dist/` to your new host.
+
 ## Updating content
 - **Events:** `src/data/events.ts`. Past events hide automatically in the browser.
 - **Parade facts / countdown:** the `parade` object in `src/data/events.ts`
