@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
+    "dev": "BASE_PATH=/ astro dev",
+    "stop": "astro dev stop",
     "build": "astro build",
     "build:wix": "SITE_URL=https://www.ashevillemardigras.org BASE_PATH=/ npm run build && node scripts/prepare-wix-static.mjs",
     "preview": "astro preview"

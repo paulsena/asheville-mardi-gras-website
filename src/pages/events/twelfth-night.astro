@@ -32,7 +32,7 @@ const date = new Intl.DateTimeFormat('en-US', {
           <a class="btn" href={links.twelfthNightTickets} rel="noopener"><Icon name="ticket" size={18} /> Buy Tickets</a>
         </div>
         <p>Each year, deep in the heart of winter, the Mardi Gras season lights a spark as it begins in January with the Twelfth Night dance party and celebration. On this enchanted night, the King and Queen of Asheville's new Mardi Gras season will be crowned.</p>
-        <p>This year there are going to be a few changes to the Twelfth Night events. The first is that this year it will be held at the Funkatorium which will be closed to the public and we will have the entire venue to ourselves. The Kitchen will be closed so you won't be able to order food but the Bar will be open.</p>
+        <p>Twelfth Night will be held at the Funkatorium, which will be closed to the public so we will have the entire venue to ourselves. The kitchen will be closed so you won't be able to order food, but the bar will be open.</p>
       </div>
     </div>
   </section>
@@ -40,11 +40,9 @@ const date = new Intl.DateTimeFormat('en-US', {
   <section class="section section--parchment">
     <div class="wrap narrow stack">
       <h2>How the King &amp; Queen are chosen</h2>
-      <p>Partygoers are invited to have a slice of king cake. However, only current Asheville Mardi Gras members get to take a slice of the king cake containing the little plastic baby. <a href={withBase('/membership')}>Update your membership here</a>.</p>
-      <p>Whoever finds the Mardi Gras baby in his or her slice can become the next king or queen, joining the ranks of AMG royalty. Memberships will be available at the door for $30, but register online to avoid the line at the door. As always, costumery and buffoonery are encouraged.</p>
-      <p>Another change that we are trying out this year is how the King and Queen are selected. In past years, deciding who wants a chance at the baby and who doesn't was always a bother and took too long and there were always a few rumors that "it was rigged". So we are going for more transparency and a smaller pool of candidates.</p>
-      <p>We have had a lot of good Kings and Queens and we'd like to continue that trend so we will be accepting nominations for Royalty and the board will contact candidates to make sure they want the honor and are willing to fulfill all the responsibilities that come with it. The pool will be narrowed down to 15-20 folks and then during the Twelfth Night festivities, these folks will each select a slice of cake and baby will make the final decision.</p>
-      <p>For everyone else there will be still be King cake (but it will come from a baby-less cake).</p>
+      <p>If you want a chance at the crown, nominate yourself using the <a href={links.royaltyNomination} rel="noopener">royalty self-nomination form</a>. Be sure to read the <a href={withBase('/royalty')}>Rules for Royals</a> first. The board will contact candidates to make sure they are willing to fulfill all the responsibilities that come with it. Anyone can nominate themselves, but you must be an Asheville Mardi Gras member by Twelfth Night to become royalty. <a href={withBase('/membership')}>Join or renew your membership here</a>.</p>
+      <p>During the Twelfth Night festivities, the candidates will each select a slice of king cake with a hidden baby, so it's still completely random. Whoever finds the Mardi Gras baby in his or her slice can become the next king or queen, joining the ranks of AMG royalty.</p>
+      <p>For everyone else there will still be King cake (but it will come from a baby-less cake). Memberships will be available at the door for $30, but register online to avoid the line at the door. As always, costumery and buffoonery are encouraged.</p>
     </div>
   </section>
 
@@ -54,6 +52,7 @@ const date = new Intl.DateTimeFormat('en-US', {
         <h3>Royalty</h3>
         <p>If you're interested in what it takes to be King or Queen, hit this button for all the requirements and responsibilities. There's more to it than just riding on the float!!!</p>
         <a class="btn btn--sm btn--purple" href={withBase('/royalty')}>Rules for Royals</a>
+        <a class="btn btn--sm" href={links.royaltyNomination} rel="noopener">Nominate Yourself</a>
       </div></article>
       <article class="card"><div class="card-body">
         <h3>Membership</h3>

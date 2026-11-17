@@ -27,6 +27,7 @@ export const links = {
   paradeVolunteer: 'https://signup.com/client/invitation2/secure/12887100021/true#/invitation',
   kreweList: 'https://docs.google.com/document/d/1R7ev8ZWE8PrfZwspzSHdFEVXq2UtrZGiK5EEhaatKT0/edit?usp=sharing',
   paradeTerms: 'https://drive.google.com/file/d/1TgM-U2JDwODo58n6EH9gjYJnMjiwcXM_/view?usp=sharing',
+  royaltyNomination: 'https://docs.google.com/forms/d/e/1FAIpQLSezrr_d_hYfRXO8PxQPA2L74gvHZ3_bKEQH7uIkfoCbbN_0WA/viewform',
   kreweRegistration: 'https://forms.gle/8MFma9XMdjNTNcpi7',
   chefMarkDragon: 'http://www.chefmarkdragon.com',
 };

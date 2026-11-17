@@ -10,7 +10,7 @@ server, database, or UI framework. `DESIGN.md` explains the design direction; `R
 ## Commands
 ```sh
 npm install        # once
-npm run dev        # dev server at http://localhost:4321 (Astro 7 daemonizes it; stop with `npx astro dev stop`)
+npm run dev        # dev server at http://localhost:4321 (Astro 7 daemonizes it; stop with `npm run stop`)
 npm run build      # static build into dist/ — MUST pass before you finish any change
 npm run preview    # serve dist/
 ```

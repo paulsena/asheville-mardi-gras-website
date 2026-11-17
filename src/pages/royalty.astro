@@ -2,6 +2,7 @@
 import { withBase } from '../utils/url';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import { links } from '../data/site';
 ---
 <Base title="Rules for Royals" description="Do you want to be the next King or Queen of Asheville Mardi Gras? How royals are chosen and what the reign involves.">
   <PageHero eyebrow="Rules for Royals" title="Do you want to be the next King or Queen of Mardi Gras?" lede="Becoming King or Queen of Mardi Gras is a huge honor and a lot of fun, but it is not for everyone. Please use this information to help you decide if you want to go “All In” for the fun and be a grand, colorful representative of Asheville Mardi Gras!!!!" />
@@ -11,14 +12,15 @@ import PageHero from '../components/PageHero.astro';
       <div class="stack">
         <h2>How and when are they chosen?</h2>
         <p>Each year, deep in the heart of winter, the Mardi Gras season lights a spark as it begins in January with the <a href={withBase('/events/twelfth-night')}>Twelfth Night celebration</a>. On this enchanted night, the King and Queen of Asheville’s new Mardi Gras season will be crowned.</p>
-        <p>Worthy individuals are nominated by Asheville Mardi Gras members to be royalty. Nominees can decide if they want to be considered for a royal position. If so, they complete a short survey to ensure that they are suitable for a royal position.</p>
+        <p>Royalty is by self-nomination. Anyone who wants to be considered for a royal position completes a short <a href={links.royaltyNomination} rel="noopener">self-nomination form</a> to ensure that they are suitable for a royal position.</p>
         <p>The eligible royal nominees at Twelfth Night will be invited to take a slice of king cake. Whoever finds the king cake baby in his or her slice will pick a royal consort, and the two will ride the royal float accompanied by their court in the Asheville Mardi Gras Parade!</p>
         <p>The two persons who accept the coronation as Asheville Mardi Gras’ Royalty share the duties and expectations as outlined below for one year, with the assistance and support of the Asheville Mardi Gras Board</p>
       </div>
       <aside class="panel panel--gold">
         <h3>Royalty nominations</h3>
-        <p>Nominations are made by Asheville Mardi Gras members. The nomination form is currently closed.</p>
-        <p style="margin:0">You must be a member to become royalty. <a href={withBase('/membership')}>Join or renew</a>.</p>
+        <p>Want to reign? Nominate yourself by filling out the royalty self-nomination form.</p>
+        <p><a class="btn btn--sm btn--purple" href={links.royaltyNomination} rel="noopener">Nominate Yourself</a></p>
+        <p style="margin:0">Anyone can nominate themselves, but you must be an Asheville Mardi Gras member by Twelfth Night to become royalty. <a href={withBase('/membership')}>Join or renew</a>.</p>
       </aside>
     </div>
   </section>
@@ -39,8 +41,8 @@ import PageHero from '../components/PageHero.astro';
         <li>
           <h3>Customary costumed appearances</h3>
           <ul>
-            <li>Mardi Gras Parade</li><li>Queen’s Ball</li><li>Midway to Mardi Gras</li><li>Krewe Meet and Greet</li><li>Cajun Cookoff</li>
-            <li>Queen’s luncheon (no crowns, but hats)</li><li>Membership Picnic</li><li>Twelfth Night</li>
+            <li>Mardi Gras Parade</li><li>Queen’s Ball</li><li>Midway to Mardi Gras</li><li>Cajun Cookoff</li>
+            <li>Membership Picnic</li><li>Twelfth Night</li>
           </ul>
           <h4>Other discretionary costume opportunities</h4>
           <ul><li>Downtown after Five</li><li>Asheville Holiday Parade</li><li>Other area Parades or Private Parades and appearances</li><li>Media appearances</li></ul>
